@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Create graphite directories
-#if [ ! -d /data/grafana ]
-#then
-#    mkdir -p /data/grafana
-#fi
-
-#if [ ! -d /data/graphite ]
-#then
-#    mkdir -p /data/graphite
-#fi
-
 # Set up basic_auth
 file=basic_auth
 if [ ! -f $file ]
