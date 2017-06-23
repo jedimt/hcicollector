@@ -1,13 +1,12 @@
 #!/usr/bin/python
-# solidfire_graphite_collector.py
+# solidfire_graphite_collector_v2.py
 #
-# Version 1.0.5
-# Author: Colin Bieberstein
-# Contributors: Pablo Luis Zorzoli, Davide Obbi
+# Version 1.0.0
+# Author: Aaron Patten
+# Original author: Colin Bieberstein
+# Original contributors: Pablo Luis Zorzoli, Davide Obbi
 #
-# 1.0.5 = added debug mode, intead of specifying the graphite server, you can specify 'debug' and the script will send the metrixs to the log file
-#
-# Copyright &copy; 2016 NetApp, Inc. All Rights Reserved.
+# Copyright  2017 NetApp, Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -259,8 +258,6 @@ parser.add_argument('-l', '--logfile', default='/tmp/solidfire-graphite-collecto
     help='logfile. default: /tmp/solidfire-graphite-collector.log')
 args = parser.parse_args()
 
-# Run this script as a daemon
-# with daemon.DaemonContext(): -> don't run as daemon in a container
 to_graphite = True
 # Logger module configuration
 if (args.logfile):
@@ -275,9 +272,6 @@ if args.graphite == "debug":
 else:
 	graphyte.init(args.graphite, port=args.port, prefix=args.metricroot)
 
-# Loop only at 1 minute intervals from start time.
-# starttime=time.time()
-# while True: -> run it once ever pass from wrapper.sh
 LOG.info("Metrics Collection for array: {0}".format(args.solidfire))
 try:
 	sfe = ElementFactory.create(args.solidfire, args.username, args.password)
@@ -294,4 +288,3 @@ except Exception as e:
 	LOG.warning("General Exception: {0}".format(str(e)))
 
 sfe = None
-# time.sleep(60.0 - ((time.time() - starttime) % 60.0)) -> no timer since not running in a loop
