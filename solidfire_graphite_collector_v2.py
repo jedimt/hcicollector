@@ -31,7 +31,7 @@ def send_cluster_stats(sf_element_factory, prefix):
     """
     send a subset of GetClusterStats API call results to graphite.
     """
-    metrics = ['clientQueueDepth', 'readLatencyUSec', 'clusterUtilization']
+    metrics = ['clientQueueDepth', 'clusterUtilization']
     monotonic = ['readOps', 'readBytes', 'writeOps', 'writeBytes']
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
