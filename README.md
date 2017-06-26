@@ -38,13 +38,15 @@ and a user name and password
 *Add the preconfigured Grafana dashboards from the 'dashboards' directory
 ```
 
-A more complete installation and configuration guide is available here: https://docs.google.com/document/d/1ZWiBs0_pYRTywlzlV0eV_Qnb9wwxH7u__dEUNQOCEFw/edit
+A more complete installation and configuration guide "SolidFireStatsCollectionwithGraphiteandGrafana.pdf" is included in the repository.
 
 ## Authors
 
 **Aaron Patten**
+
 *GitHub* - [Jedimt](https://github.com/jedimt)
-*Blog* - [Jedimt.com] (www.jedimt.com)
+
+*Blog* - [Jedimt.com](www.jedimt.com)
 
 ## Acknowledgments
 
