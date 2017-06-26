@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_GRAPHITE",
-      "label": "Graphite",
+      "name": "DS_GRAPHITE-DB",
+      "label": "graphite-db",
       "description": "",
       "type": "datasource",
       "pluginId": "graphite",
@@ -10,6 +10,24 @@
     }
   ],
   "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.3.2"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "graphite",
+      "name": "Graphite",
+      "version": "1.0.0"
+    },
     {
       "type": "panel",
       "id": "singlestat",
@@ -21,99 +39,25 @@
       "id": "table",
       "name": "Table",
       "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "3.1.1"
-    },
-    {
-      "type": "datasource",
-      "id": "graphite",
-      "name": "Graphite",
-      "version": "1.0.0"
     }
   ],
-  "id": null,
-  "title": "solidfire-volume",
-  "tags": [
-    "ElementOS8",
-    "SolidFire"
-  ],
-  "style": "dark",
-  "timezone": "browser",
+  "annotations": {
+    "list": []
+  },
   "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
   "hideControls": false,
-  "sharedCrosshair": true,
+  "id": null,
+  "links": [],
+  "refresh": "1m",
   "rows": [
     {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
       "collapse": false,
+      "height": 208,
       "panels": [
         {
-          "title": "Volume Size",
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "singlestat",
-          "isNew": true,
-          "id": 25,
-          "targets": [
-            {
-              "target": "alias(scale(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.volumeSize,  0.000000000000909494701772928), 'Size_TB')",
-              "refId": "A",
-              "textEditor": true
-            }
-          ],
-          "links": [],
-          "datasource": "${DS_GRAPHITE}",
-          "maxDataPoints": 100,
-          "interval": null,
           "cacheTimeout": null,
-          "format": "none",
-          "prefix": "",
-          "postfix": "TB",
-          "nullText": null,
-          "valueMaps": [
-            {
-              "value": "null",
-              "op": "=",
-              "text": "N/A"
-            }
-          ],
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "rangeMaps": [
-            {
-              "from": "null",
-              "to": "null",
-              "text": "N/A"
-            }
-          ],
-          "mappingType": 1,
-          "nullPointMode": "connected",
-          "valueName": "avg",
-          "prefixFontSize": "50%",
-          "valueFontSize": "80%",
-          "postfixFontSize": "50%",
-          "thresholds": "",
           "colorBackground": false,
           "colorValue": false,
           "colors": [
@@ -121,69 +65,21 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "sparkline": {
-            "show": false,
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "fillColor": "rgba(31, 118, 189, 0.18)"
-          },
-          "gauge": {
-            "show": false,
-            "minValue": 0,
-            "maxValue": 100,
-            "thresholdMarkers": true,
-            "thresholdLabels": false
-          }
-        },
-        {
-          "title": "Thin Factor",
-          "error": false,
-          "span": 2,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
-          "type": "singlestat",
-          "isNew": true,
-          "id": 27,
-          "targets": [
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.zeroBlocks)",
-              "refId": "A",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.nonZeroBlocks)",
-              "refId": "B",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "sumSeries(#A, #B)",
-              "refId": "C",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(divideSeries(#C, #B), 'Thin Provisioning Factor')",
-              "refId": "D",
-              "textEditor": true
-            }
-          ],
-          "links": [],
-          "datasource": "${DS_GRAPHITE}",
-          "maxDataPoints": 100,
-          "interval": null,
-          "cacheTimeout": null,
+          "error": false,
           "format": "none",
-          "prefix": "",
-          "postfix": "",
-          "nullText": null,
-          "valueMaps": [
-            {
-              "value": "null",
-              "op": "=",
-              "text": "N/A"
-            }
-          ],
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 25,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
           "mappingTypes": [
             {
               "name": "value to text",
@@ -194,40 +90,47 @@
               "value": 2
             }
           ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "TB",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
           "rangeMaps": [
             {
               "from": "null",
-              "to": "null",
-              "text": "N/A"
+              "text": "N/A",
+              "to": "null"
             }
           ],
-          "mappingType": 1,
-          "nullPointMode": "connected",
-          "valueName": "avg",
-          "prefixFontSize": "50%",
-          "valueFontSize": "80%",
-          "postfixFontSize": "50%",
-          "thresholds": "80,90",
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
+          "span": 2,
           "sparkline": {
-            "show": false,
+            "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
             "lineColor": "rgb(31, 120, 193)",
-            "fillColor": "rgba(31, 118, 189, 0.18)"
+            "show": false
           },
-          "gauge": {
-            "show": false,
-            "minValue": 0,
-            "maxValue": 100,
-            "thresholdMarkers": true,
-            "thresholdLabels": false
-          }
+          "tableColumn": "",
+          "targets": [
+            {
+              "refId": "A",
+              "target": "alias(scale(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.volumeSize,  0.000000000000909494701772928), 'Size_TB')",
+              "textEditor": true
+            }
+          ],
+          "thresholds": "",
+          "title": "Volume Size",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
         },
         {
           "columns": [
@@ -236,11 +139,11 @@
               "value": "current"
             }
           ],
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fontSize": "100%",
           "id": 20,
-          "isNew": true,
           "links": [],
           "pageSize": null,
           "scroll": true,
@@ -272,23 +175,20 @@
           ],
           "targets": [
             {
-              "refId": "C",
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.unalignedReads)",
-              "textEditor": false
-            },
-            {
-              "refId": "D",
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.unalignedWrites)",
-              "textEditor": false
-            },
-            {
               "refId": "A",
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.burstIOPSCredit)",
-              "textEditor": true
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.*.volume.$Volume.unalignedReads)"
             },
             {
               "refId": "B",
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.throttle)",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.*.volume.$Volume.unalignedWrites)"
+            },
+            {
+              "refId": "C",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.*.volume.$Volume.averageIOPSize)"
+            },
+            {
+              "refId": "D",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.*.volume.$Volume.throttle)",
               "textEditor": true
             }
           ],
@@ -297,54 +197,29 @@
           "type": "table"
         },
         {
-          "title": "%Read",
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "singlestat",
-          "isNew": true,
-          "id": 28,
-          "targets": [
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readOps)",
-              "refId": "A",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeOps)",
-              "refId": "B",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(sumSeries(#A, #B), 'TotalOps')",
-              "refId": "C",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(divideSeries(#A, #C), 'Pct Read')",
-              "refId": "D",
-              "textEditor": true
-            }
-          ],
-          "links": [],
-          "datasource": "${DS_GRAPHITE}",
-          "maxDataPoints": 100,
-          "interval": null,
           "cacheTimeout": null,
-          "format": "percentunit",
-          "prefix": "",
-          "postfix": "",
-          "nullText": null,
-          "valueMaps": [
-            {
-              "value": "null",
-              "op": "=",
-              "text": "N/A"
-            }
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
           ],
+          "datasource": "${DS_GRAPHITE-DB}",
+          "editable": true,
+          "error": false,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 1,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 28,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
           "mappingTypes": [
             {
               "name": "value to text",
@@ -355,90 +230,90 @@
               "value": 2
             }
           ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
           "rangeMaps": [
             {
               "from": "null",
-              "to": "null",
-              "text": "N/A"
+              "text": "N/A",
+              "to": "null"
             }
           ],
-          "mappingType": 1,
-          "nullPointMode": "connected",
-          "valueName": "avg",
-          "prefixFontSize": "50%",
-          "valueFontSize": "80%",
-          "postfixFontSize": "50%",
-          "thresholds": "",
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
+          "span": 2,
           "sparkline": {
-            "show": false,
+            "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
             "lineColor": "rgb(31, 120, 193)",
-            "fillColor": "rgba(31, 118, 189, 0.18)"
+            "show": false
           },
-          "gauge": {
-            "show": true,
-            "minValue": 0,
-            "maxValue": 1,
-            "thresholdMarkers": true,
-            "thresholdLabels": false
-          }
+          "tableColumn": "",
+          "targets": [
+            {
+              "hide": true,
+              "refId": "A",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readOps)",
+              "textEditor": true
+            },
+            {
+              "hide": true,
+              "refId": "B",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeOps)",
+              "textEditor": true
+            },
+            {
+              "hide": true,
+              "refId": "C",
+              "target": "alias(sumSeries(#A, #B), 'TotalOps')",
+              "textEditor": true
+            },
+            {
+              "refId": "D",
+              "target": "alias(divideSeries(#A, #C), 'Pct Read')",
+              "textEditor": true
+            }
+          ],
+          "thresholds": "",
+          "title": "%Read",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
         },
         {
-          "title": "%Write",
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "singlestat",
-          "isNew": true,
-          "id": 29,
-          "targets": [
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readOps)",
-              "refId": "A",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeOps)",
-              "refId": "B",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(sumSeries(#A, #B), 'TotalOps')",
-              "refId": "C",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(divideSeries(#B, #C), 'Pct Write')",
-              "refId": "D",
-              "textEditor": true
-            }
-          ],
-          "links": [],
-          "datasource": "${DS_GRAPHITE}",
-          "maxDataPoints": 100,
-          "interval": null,
           "cacheTimeout": null,
-          "format": "percentunit",
-          "prefix": "",
-          "postfix": "",
-          "nullText": null,
-          "valueMaps": [
-            {
-              "value": "null",
-              "op": "=",
-              "text": "N/A"
-            }
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
           ],
+          "datasource": "${DS_GRAPHITE-DB}",
+          "editable": true,
+          "error": false,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 1,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 29,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
           "mappingTypes": [
             {
               "name": "value to text",
@@ -449,71 +324,173 @@
               "value": 2
             }
           ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
           "rangeMaps": [
             {
               "from": "null",
-              "to": "null",
-              "text": "N/A"
+              "text": "N/A",
+              "to": "null"
             }
           ],
-          "mappingType": 1,
-          "nullPointMode": "connected",
-          "valueName": "avg",
-          "prefixFontSize": "50%",
-          "valueFontSize": "80%",
-          "postfixFontSize": "50%",
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "hide": true,
+              "refId": "A",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readOps)",
+              "textEditor": true
+            },
+            {
+              "hide": true,
+              "refId": "B",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeOps)",
+              "textEditor": true
+            },
+            {
+              "hide": true,
+              "refId": "C",
+              "target": "alias(sumSeries(#A, #B), 'TotalOps')",
+              "textEditor": true
+            },
+            {
+              "refId": "D",
+              "target": "alias(divideSeries(#B, #C), 'Pct Write')",
+              "textEditor": true
+            }
+          ],
           "thresholds": "",
+          "title": "%Write",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
           "colorBackground": false,
           "colorValue": false,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
+            "rgba(50, 172, 45, 0.97)",
             "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "rgba(245, 54, 54, 0.9)"
           ],
+          "datasource": "${DS_GRAPHITE-DB}",
+          "editable": true,
+          "error": false,
+          "format": "percent",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 31,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
           "sparkline": {
-            "show": false,
+            "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
             "lineColor": "rgb(31, 120, 193)",
-            "fillColor": "rgba(31, 118, 189, 0.18)"
+            "show": false
           },
-          "gauge": {
-            "show": true,
-            "minValue": 0,
-            "maxValue": 1,
-            "thresholdMarkers": true,
-            "thresholdLabels": false
-          }
+          "tableColumn": "",
+          "targets": [
+            {
+              "hide": false,
+              "refId": "A",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.throttle)",
+              "textEditor": true
+            }
+          ],
+          "thresholds": "38,60",
+          "title": "Throttle",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
         }
-      ]
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "New row",
+      "titleSize": "h6"
     },
     {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
       "collapse": false,
+      "height": "250px",
       "panels": [
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 15,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
             "current": true,
             "max": true,
             "min": false,
-            "rightSide": false,
+            "rightSide": true,
             "show": true,
             "total": false,
             "values": true
@@ -521,7 +498,7 @@
           "lines": true,
           "linewidth": 2,
           "links": [],
-          "nullPointMode": "null as zero",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -536,21 +513,25 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 12,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
+              "hide": false,
               "refId": "A",
-              "target": "alias(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readBytes, 100)), 1), 'Read')",
+              "target": "alias(scaleToSeconds(perSecond(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readBytes, 100)), 1), 'Read')",
               "textEditor": false
             },
             {
-              "refId": "B",
-              "target": "alias(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeBytes, 100)), 1), 'Write')",
+              "hide": false,
+              "refId": "C",
+              "target": "alias(scaleToSeconds(perSecond(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeBytes, 100)), 1), 'Write')",
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Throughput",
@@ -562,7 +543,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -583,36 +568,37 @@
             }
           ]
         }
-      ]
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "New row",
+      "titleSize": "h6"
     },
     {
       "collapse": false,
-      "editable": true,
       "height": "250px",
       "panels": [
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 18,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
-            "current": false,
-            "hideEmpty": true,
-            "hideZero": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
             "max": true,
-            "min": true,
+            "min": false,
             "rightSide": true,
             "show": true,
             "total": false,
@@ -621,7 +607,7 @@
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null as zero",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 2,
           "points": false,
@@ -637,6 +623,7 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 12,
           "stack": false,
           "steppedLine": false,
@@ -646,18 +633,22 @@
               "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readLatencyUSec, 'Read')"
             },
             {
+              "hide": false,
               "refId": "B",
               "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeLatencyUSec, 'Write')"
             },
             {
+              "hide": false,
               "refId": "C",
               "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.latencyUSec, 'Average')"
             },
             {
+              "hide": false,
               "refId": "D",
               "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.clientQueueDepth, 'Queue Depth')"
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Latency & Queue Depth",
@@ -669,7 +660,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -691,30 +686,28 @@
           ]
         }
       ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
       "showTitle": false,
-      "title": ""
+      "title": "Row title",
+      "titleSize": "h6"
     },
     {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
       "collapse": false,
+      "height": "250px",
       "panels": [
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 14,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -729,7 +722,7 @@
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -745,6 +738,7 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -765,6 +759,7 @@
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Mean IOPS",
@@ -776,7 +771,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -800,18 +799,14 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 30,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -824,55 +819,57 @@
             "values": true
           },
           "lines": true,
-          "linewidth": 1,
+          "linewidth": 2,
           "links": [],
-          "nullPointMode": "null",
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
+              "hide": true,
               "refId": "A",
               "target": "alias(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.readOps, 100)), 1), 'Read')",
-              "textEditor": true,
-              "hide": true
+              "textEditor": true
             },
             {
+              "hide": true,
               "refId": "B",
               "target": "alias(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.writeOps, 100)), 1), 'Write')",
-              "textEditor": true,
-              "hide": true
+              "textEditor": true
             },
             {
+              "hide": true,
               "refId": "C",
               "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.averageIOPSize, 'Avg IOP Size')",
-              "textEditor": true,
-              "hide": true
+              "textEditor": true
             },
             {
+              "hide": true,
               "refId": "D",
               "target": "alias(scale(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.volumeSize,  0.000000000000909494701772928 ), 'Size TB')",
-              "textEditor": true,
-              "hide": true
+              "textEditor": true
             },
             {
+              "hide": true,
               "refId": "E",
               "target": "sumSeries(#A, #B)",
-              "textEditor": true,
-              "hide": true
+              "textEditor": true
             },
             {
+              "hide": false,
               "refId": "F",
               "target": "alias(divideSeries(#E, #D), \"IOPS/TB\")",
-              "textEditor": true,
-              "hide": false
+              "textEditor": true
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Mean IO Density",
@@ -884,11 +881,15 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
-              "format": "none",
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -896,191 +897,274 @@
               "show": true
             },
             {
-              "format": "bytes",
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
               "min": null,
-              "show": false
+              "show": true
             }
           ]
         }
-      ]
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "New row",
+      "titleSize": "h6"
     },
     {
       "collapse": false,
-      "editable": true,
       "height": "250px",
       "panels": [
         {
-          "title": "Volume Actual IOPS",
-          "error": false,
-          "span": 6,
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
-          "type": "graph",
-          "isNew": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
           "id": 24,
-          "targets": [
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.actualIOPS)",
-              "refId": "B",
-              "textEditor": true,
-              "hide": false
-            }
-          ],
-          "datasource": "${DS_GRAPHITE}",
-          "renderer": "flot",
-          "yaxes": [
-            {
-              "label": null,
-              "show": true,
-              "logBase": 1,
-              "min": null,
-              "max": null,
-              "format": "short"
-            },
-            {
-              "label": null,
-              "show": true,
-              "logBase": 1,
-              "min": null,
-              "max": null,
-              "format": "short"
-            }
-          ],
-          "xaxis": {
-            "show": true
-          },
-          "grid": {
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
           },
           "lines": true,
-          "fill": 1,
           "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
+          "links": [],
           "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": true,
-            "sort": 0,
-            "msResolution": false
-          },
-          "timeFrom": null,
-          "timeShift": null,
-          "aliasColors": {},
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
           "seriesOverrides": [],
-          "links": []
-        },
-        {
-          "title": "Volume IO Density",
-          "error": false,
+          "spaceLength": 10,
           "span": 6,
-          "editable": true,
-          "type": "graph",
-          "isNew": true,
-          "id": 23,
+          "stack": false,
+          "steppedLine": false,
           "targets": [
             {
-              "target": "alias(scale(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.volumeSize,  0.000000000000909494701772928), 'Size_TB')",
-              "refId": "A",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.actualIOPS)",
+              "hide": false,
               "refId": "B",
-              "textEditor": true,
-              "hide": true
-            },
-            {
-              "target": "alias(divideSeries(#B, #A), 'IO Density (IOPS/TB)')",
-              "refId": "C",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.actualIOPS)",
               "textEditor": true
             }
           ],
-          "datasource": "${DS_GRAPHITE}",
-          "renderer": "flot",
-          "yaxes": [
-            {
-              "label": null,
-              "show": true,
-              "logBase": 1,
-              "min": null,
-              "max": null,
-              "format": "short"
-            },
-            {
-              "label": null,
-              "show": true,
-              "logBase": 1,
-              "min": null,
-              "max": null,
-              "format": "short"
-            }
-          ],
-          "xaxis": {
-            "show": true
-          },
-          "grid": {
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": true,
-            "sort": 0,
-            "msResolution": false
-          },
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
+          "title": "Volume Actual IOPS",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
           "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 23,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
           "seriesOverrides": [],
-          "links": []
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": true,
+              "refId": "A",
+              "target": "alias(scale(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.volumeSize,  0.000000000000909494701772928), 'Size_TB')",
+              "textEditor": true
+            },
+            {
+              "hide": true,
+              "refId": "B",
+              "target": "aliasByMetric(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.actualIOPS)",
+              "textEditor": true
+            },
+            {
+              "refId": "C",
+              "target": "alias(divideSeries(#B, #A), 'IO Density (IOPS/TB)')",
+              "textEditor": true
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Volume IO Density",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
         }
       ],
-      "title": "New row"
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "New row",
+      "titleSize": "h6"
     }
   ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "SolidFire"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {},
+        "datasource": "${DS_GRAPHITE-DB}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Cluster",
+        "options": [],
+        "query": "netapp.solidfire.cluster.*",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {},
+        "datasource": "${DS_GRAPHITE-DB}",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "AccountID",
+        "options": [],
+        "query": "netapp.solidfire.cluster.$Cluster.accountID.*",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {},
+        "datasource": "${DS_GRAPHITE-DB}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Volume",
+        "options": [],
+        "query": "netapp.solidfire.cluster.$Cluster.accountID.*.volume.*",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -1108,56 +1192,7 @@
       "30d"
     ]
   },
-  "templating": {
-    "list": [
-      {
-        "allValue": "*",
-        "current": {},
-        "datasource": "${DS_GRAPHITE}",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "Cluster",
-        "options": [],
-        "query": "netapp.solidfire.cluster.*",
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "allValue": "*",
-        "current": {},
-        "datasource": "${DS_GRAPHITE}",
-        "hide": 0,
-        "includeAll": true,
-        "multi": false,
-        "name": "AccountID",
-        "options": [],
-        "query": "netapp.solidfire.cluster.$Cluster.accountID.*",
-        "refresh": 1,
-        "type": "query"
-      },
-      {
-        "allValue": "*",
-        "current": {},
-        "datasource": "${DS_GRAPHITE}",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "Volume",
-        "options": [],
-        "query": "netapp.solidfire.cluster.$Cluster.accountID.*.volume.*",
-        "refresh": 1,
-        "type": "query"
-      }
-    ]
-  },
-  "annotations": {
-    "list": []
-  },
-  "refresh": "1m",
-  "schemaVersion": 12,
-  "version": 29,
-  "links": [],
-  "gnetId": null
+  "timezone": "browser",
+  "title": "solidfire-volume",
+  "version": 7
 }
