@@ -10,7 +10,6 @@ Current Release
 
 Version .1 (beta)
 
-
 Description
 -----------
 
@@ -40,7 +39,6 @@ Plugin (NDVP) can be used for persistent storage of metrics on a NetApp system.
  
 A detailed install guide can be found at 
 https://docs.google.com/document/d/1ZWiBs0_pYRTywlzlV0eV_Qnb9wwxH7u__dEUNQOCEFw/edit
-
 
 **Details for the docker-compose.yml file**
 
