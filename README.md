@@ -1,132 +1,60 @@
-solidfire-graphite-collector
+sfcollector
 =============================
 
-Project to collect and store SolidFire cluster metrics in Graphite.  
-
-
-# solidfire-graphite-collector
-
-Current Release
----------------
-
-Version 1.0.5
-
-
-Description
------------
-
-The SolidFire Graphite collector is a simple utility to collect metrics 
-from Element OS 8.x and store them in graphite.   
-
-Required Libraries
-------------------
-
-| Component                                                        | Version   |
-|------------------------------------------------------------------|-----------|
-| solidfire-sdk-python <https://github.com/solidfire/solidfire-sdk-python/> | 1.1   |
-| Requests <http://docs.python-requests.org/en/master/>            | 2.12.1+   |
-| graphyte <https://github.com/Jetsetter/graphyte/>                | 1.1       |
-| python-daemon <https://pypi.python.org/pypi/python-daemon/>      | 2.1.2     |
-| logging | 0.4.9.6 |
-
-
-Usage
------
-
-The script is called from the command line using the parameters shown below.  
-You can run multiple instances of the script in parallel if you have more than one 
-cluster to monitor.
-
-
-    usage: python solidfire_graphite_collector.py [-h] [-s SOLIDFIRE] [-u USERNAME]
-                 [-p PASSWORD] [-g GRAPHITE] [-t PORT] [-m METRICROOT] [-l LOGFILE]
-
-      -h, --help            show this help message and exit
-
-      -s SOLIDFIRE, --solidfire SOLIDFIRE
-                        hostname of SolidFire array from which metrics should
-                        be collected
-
-      -u USERNAME, --username USERNAME
-                        username for SolidFire array.  default admin
-
-      -p PASSWORD, --password PASSWORD   
-                        password for SolidFire array.  default password
-
-      -g GRAPHITE, --graphite GRAPHITE
-                        hostname of Graphite server to send to.  default localhost
-
-      -t PORT, --port PORT  port to send message to.  default 2003
-
-      -m METRICROOT, --metricroot METRICROOT  port to send message to.  default netapp.solidfire.cluster
-
-      -l LOGFILE, --logfile LOGFILE  if defined, execution will be logged to this file.
-
-
-
-To have it automatically startup on server boot, make use of an rc.d script (or upstart) 
-as appropriate for your OS version.   
-
-To stop this script, simply kill the process.  A sample command to do so is shown below:
-
-    ps -ef | grep solidfire_graphite_collector.py | grep -v grep | awk {'print $2'} \
-    | xargs kill
-
-
-Other Scripts
-===============
-
-#launcher.py 
+sfcollector is a containerized collector for SolidFire clusters and is based off the following projects
+-> cbiebers/solidfire-graphite-collector (original collector logic)
+-> jmreicha/graphite-docker (graphite + grafana)
 
 Current Release
 ---------------
 
-Version 1.0.1
+Version .1 (beta)
+
 
 Description
 -----------
 
-Helper script to use a configuration file to provide arguments for launching multiple 
-instances of solidfire_graphite_collector.py at once.
+The SolidFire collector is a fully packaged metrics collection and graphing solution 
+for Element OS 8+ based on three container. 
+	1. SFCollector-> runs a python script to scrape results from SolidFire clusters 
+	2. Graphite database -> keeps all time series data from the SFCollector
+	3. Grafana -> Graphing engine
 
-| Component                                                        | Version   |
-|------------------------------------------------------------------|-----------|
-| python3                                                          | 3.x       |
-| configparser | 3.5.0 |
+The collector stores metrics in graphite and presents those metrics 
+through a set of pre-configured Grafana dashboards.  Optionally, the Netapp Docker Volume
+Plugin (NDVP) can be used for persistent storage of metrics on a NetApp system.
 
-Requires a configuration file (sgc.config) with one or more sections in the form:
-
-        [solidfire_array_hostname]
-        username : solidfire_user
-        password : solidfire_pass
-        graphite : graphite_server_hostname
-        port     : graphite_port
-        metricroot : netapp.solidfire.cluster
-
-Where graphite and port are optional.
-
-#dashboards/*
-
-Description
------------
-The dashboards directorycontains a set of sample Grafana dashboards 
-utilizing the collected metrics.
+#Quick and Dirty Install and Configuration
+ *(Optional) Install the NetApp Docker Volume Plugin (NDVP)
+ *Download and install docker-compose ('sudo pip install -U docker-compose)
+ *Clone this repo ('git clone https://github.com/jedimt/sfcollector')
+ *Modify bootstrap.sh script (`cd sfcollector && chmod +x bootstrap.sh`)
+ *Run the bootstrap.sh script (`./bootstrap.sh`)
+ *Modify the collector/wrapper.sh script supplying the SolidFire MVIP address,
+  and a user name and password
+ *Modify docker-compose.yml to point at persistent storage volumes  
+ *Start up the containers (`docker-compose up`)
+ **Or in detached mode (`docker-compose up -d`)
+ *Add the graphite data source to Grafana
+ *Add the preconfigured Grafana dashboards from the 'dashboards' directory
+ 
+A detailed install guide can be found at 
+https://docs.google.com/document/d/1ZWiBs0_pYRTywlzlV0eV_Qnb9wwxH7u__dEUNQOCEFw/edit
 
 
+**Details for the docker-compose.yml file**
 
-**License**
------------
+In the `docker-compose.yml` file we are setting the default grafana password to
+`P@ssw0rd`.  You can either modify the compose file update the account password
+in the GUI after logging in the first time.
 
-Copyright © 2016 NetApp, Inc. All rights reserved.
+This set up uses basic_auth to secure graphite, you can view more info here -
+http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html.  To turn basic
+auth off you can modify the Dockerfile and nginx config to remove references
+the basic_auth settings.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may
-not use this file except in compliance with the License. You may obtain
-a copy of the License at
+The basic_auth generation relies on openssl for creating the user and
+hash for the password so one of these tools must be installed for the
+basic_auth component to work.
 
-http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

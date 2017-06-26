@@ -7,7 +7,7 @@ graphite:
         - "8126:8126"
         - "2003:2003"
         - "2004:2004"
-    volumes:
+    volumes: #Point to NDVP or local volumes
         - "graphite-db-dev:/opt/graphite/storage/whisper"
 
 grafana:
@@ -15,11 +15,11 @@ grafana:
     restart: always
     ports:
         - "80:3000"
-    volumes:
+    volumes: #Point to NDVP or local volumes
         - "grafana-dev:/var/lib/grafana"
     links:
         - graphite
-    environment:
+    environment: #Set password for Grafana web interface
         - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
 
 sfcollector:
