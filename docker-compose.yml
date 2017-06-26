@@ -1,5 +1,5 @@
 graphite:
-    build: ./config
+    build: ./graphiteconfig
     restart: always
     ports:
         - "8080:80"
@@ -21,3 +21,9 @@ grafana:
         - graphite
     environment:
         - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
+
+sfcollector:
+    build: ./collector
+    restart: always
+    links:
+        - graphite
