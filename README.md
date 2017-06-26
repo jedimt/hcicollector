@@ -55,4 +55,3 @@ The basic_auth generation relies on openssl for creating the user and
 hash for the password so one of these tools must be installed for the
 basic_auth component to work.
 
-
