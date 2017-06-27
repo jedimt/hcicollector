@@ -49,9 +49,9 @@ A more complete installation and configuration guide "SolidFireStatsCollectionwi
 
 *GitHub* - [Jedimt](https://github.com/jedimt)
 
-*Blog* - [Jedimt.com](www.jedimt.com)
+*Blog* - [Jedimt.com]{http://jedimt.com}
 
-*Twitter* - [@jedimt](www.twitter.com/jedimt)
+*Twitter* - [@jedimt](https://twitter.com/jedimt)
 
 ## Acknowledgments
 
