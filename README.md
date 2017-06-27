@@ -49,7 +49,7 @@ A more complete installation and configuration guide "SolidFireStatsCollectionwi
 
 *GitHub* - [Jedimt](https://github.com/jedimt)
 
-*Blog* - [Jedimt.com]{http://jedimt.com}
+*Blog* - [Jedimt.com](http://jedimt.com)
 
 *Twitter* - [@jedimt](https://twitter.com/jedimt)
 
