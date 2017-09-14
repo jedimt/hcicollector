@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_GRAPHITE",
-      "label": "Graphite",
+      "name": "DS_GRAPHITE-DB",
+      "label": "graphite-db",
       "description": "",
       "type": "datasource",
       "pluginId": "graphite",
@@ -11,16 +11,16 @@
   ],
   "__requires": [
     {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.3.2"
+    },
+    {
       "type": "panel",
       "id": "graph",
       "name": "Graph",
       "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "3.1.1"
     },
     {
       "type": "datasource",
@@ -29,38 +29,32 @@
       "version": "1.0.0"
     }
   ],
-  "id": null,
-  "title": "solidfire-volume-TopN",
-  "tags": [
-    "ElementOS8",
-    "SolidFire"
-  ],
-  "style": "dark",
-  "timezone": "browser",
+  "annotations": {
+    "list": []
+  },
   "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
   "hideControls": false,
-  "sharedCrosshair": true,
+  "id": null,
+  "links": [],
+  "refresh": "1m",
   "rows": [
     {
       "collapse": false,
-      "editable": true,
-      "height": "250px",
+      "height": 298,
       "panels": [
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 14,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -80,43 +74,44 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "Avg IOP Size",
-              "bars": false,
-              "color": "#890F02",
-              "lines": false,
-              "pointradius": 1,
-              "points": true,
-              "yaxis": 2
-            }
-          ],
+          "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
+              "hide": true,
               "refId": "B",
               "target": "aliasByNode(highestAverage(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeOps, 100)), 1), $TopN), 7)",
               "textEditor": false
+            },
+            {
+              "refId": "A",
+              "target": "aliasByNode(highestAverage(scale(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeOpsLastSample, '1m', 'sum', false), 2), $TopN), 7)"
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN WriteOps/s",
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "sort": 0,
+            "sort": 1,
             "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
-              "format": "iops",
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -129,25 +124,21 @@
               "logBase": 1,
               "max": null,
               "min": null,
-              "show": true
+              "show": false
             }
           ]
         },
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 15,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -178,16 +169,18 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "aliasByNode(highestAverage(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readOps, 100)), 1), $TopN), 7)",
+              "refId": "A",
+              "target": "aliasByNode(highestAverage(scale(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readOpsLastSample, '1m', 'sum', false), 2), $TopN), 7)",
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN Read Ops/s",
@@ -199,7 +192,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -223,18 +220,14 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 16,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -265,16 +258,18 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "aliasByNode(highestAverage(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeBytes, 100)), 1), $TopN), 7)",
+              "refId": "A",
+              "target": "aliasByNode(highestAverage(scale(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeBytesLastSample, '1m', 'sum', false), 2), $TopN), 7)",
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN Write Bytes/s",
@@ -286,7 +281,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -310,18 +309,14 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 17,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -352,16 +347,18 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "refId": "B",
-              "target": "aliasByNode(highestAverage(scaleToSeconds(nonNegativeDerivative(keepLastValue(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readBytes, 100)), 1), $TopN), 7)",
+              "refId": "A",
+              "target": "aliasByNode(highestAverage(scale(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readBytesLastSample, '1m', 'sum', false), 2), $TopN), 7)",
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN Read Bytes/s",
@@ -373,7 +370,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -397,18 +398,14 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 18,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -428,39 +425,42 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "Avg IOP Size",
-              "bars": false,
-              "color": "#890F02",
-              "lines": false,
-              "pointradius": 1,
-              "points": true,
-              "yaxis": 2
-            }
-          ],
+          "seriesOverrides": [],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
+              "hide": true,
               "refId": "B",
               "target": "aliasByNode(highestAverage(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeLatencyUSec, $TopN), 7)",
               "textEditor": false
+            },
+            {
+              "hide": false,
+              "refId": "A",
+              "target": "aliasByNode(highestAverage(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.writeLatencyUSec, '1m', 'sum', false), $TopN), 7)",
+              "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN Write Latency",
           "tooltip": {
             "msResolution": false,
             "shared": true,
-            "sort": 0,
+            "sort": 1,
             "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -484,18 +484,14 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_GRAPHITE}",
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_GRAPHITE-DB}",
           "editable": true,
           "error": false,
           "fill": 0,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
+          "grid": {},
           "id": 19,
-          "isNew": true,
           "legend": {
             "alignAsTable": true,
             "avg": true,
@@ -526,16 +522,18 @@
               "yaxis": 2
             }
           ],
+          "spaceLength": 10,
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
               "refId": "B",
-              "target": "aliasByNode(highestAverage(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readLatencyUSec, $TopN), 7)",
+              "target": "aliasByNode(highestAverage(summarize(netapp.solidfire.cluster.$Cluster.accountID.*.volume.*.readLatencyUSec, '1m', 'sum', false), $TopN), 7)",
               "textEditor": false
             }
           ],
+          "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Top $TopN Read Latency",
@@ -547,7 +545,11 @@
           },
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -569,19 +571,85 @@
           ]
         }
       ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
       "showTitle": true,
-      "title": "Volume Statistics"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "250px",
-      "panels": [],
-      "title": "New row"
+      "title": "Volume Statistics",
+      "titleSize": "h6"
     }
   ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "SolidFire"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {},
+        "datasource": "${DS_GRAPHITE-DB}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Cluster",
+        "options": [],
+        "query": "netapp.solidfire.cluster.*",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "5",
+          "value": "5"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "",
+        "multi": false,
+        "name": "TopN",
+        "options": [
+          {
+            "selected": false,
+            "text": "1",
+            "value": "1"
+          },
+          {
+            "selected": true,
+            "text": "5",
+            "value": "5"
+          },
+          {
+            "selected": false,
+            "text": "10",
+            "value": "10"
+          },
+          {
+            "selected": false,
+            "text": "20",
+            "value": "20"
+          }
+        ],
+        "query": "1,5,10,20",
+        "refresh": 2,
+        "type": "interval"
+      }
+    ]
+  },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -609,67 +677,7 @@
       "30d"
     ]
   },
-  "templating": {
-    "list": [
-      {
-        "allValue": "*",
-        "current": {},
-        "datasource": "${DS_GRAPHITE}",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "Cluster",
-        "options": [],
-        "query": "netapp.solidfire.cluster.*",
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "tags": [],
-          "text": "5",
-          "value": "5"
-        },
-        "datasource": null,
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "TopN",
-        "options": [
-          {
-            "selected": false,
-            "text": "1",
-            "value": "1"
-          },
-          {
-            "selected": true,
-            "text": "5",
-            "value": "5"
-          },
-          {
-            "selected": false,
-            "text": "10",
-            "value": "10"
-          },
-          {
-            "selected": false,
-            "text": "20",
-            "value": "20"
-          }
-        ],
-        "query": "1,5,10,20",
-        "refresh": 0,
-        "type": "interval"
-      }
-    ]
-  },
-  "annotations": {
-    "list": []
-  },
-  "refresh": "1m",
-  "schemaVersion": 12,
-  "version": 4,
-  "links": [],
-  "gnetId": null
+  "timezone": "browser",
+  "title": "solidfire-volume-TopN",
+  "version": 9
 }
