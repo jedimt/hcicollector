@@ -42,11 +42,7 @@
   "rows": [
     {
       "collapse": false,
-<<<<<<< HEAD
       "height": 298,
-=======
-      "height": "250px",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
       "panels": [
         {
           "aliasColors": {},
@@ -73,26 +69,12 @@
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-<<<<<<< HEAD
           "seriesOverrides": [],
-=======
-          "seriesOverrides": [
-            {
-              "alias": "Avg IOP Size",
-              "bars": false,
-              "color": "#890F02",
-              "lines": false,
-              "pointradius": 1,
-              "points": true,
-              "yaxis": 2
-            }
-          ],
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
           "spaceLength": 10,
           "span": 6,
           "stack": false,
@@ -438,26 +420,12 @@
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-<<<<<<< HEAD
           "seriesOverrides": [],
-=======
-          "seriesOverrides": [
-            {
-              "alias": "Avg IOP Size",
-              "bars": false,
-              "color": "#890F02",
-              "lines": false,
-              "pointradius": 1,
-              "points": true,
-              "yaxis": 2
-            }
-          ],
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
           "spaceLength": 10,
           "span": 6,
           "stack": false,
@@ -538,7 +506,7 @@
           "lines": true,
           "linewidth": 1,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -609,20 +577,6 @@
       "showTitle": true,
       "title": "Volume Statistics",
       "titleSize": "h6"
-<<<<<<< HEAD
-=======
-    },
-    {
-      "collapse": false,
-      "height": "250px",
-      "panels": [],
-      "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": false,
-      "title": "New row",
-      "titleSize": "h6"
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
     }
   ],
   "schemaVersion": 14,
@@ -695,11 +649,7 @@
     ]
   },
   "time": {
-<<<<<<< HEAD
     "from": "now-15m",
-=======
-    "from": "now-1h",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
     "to": "now"
   },
   "timepicker": {
@@ -729,9 +679,5 @@
   },
   "timezone": "browser",
   "title": "solidfire-volume-TopN",
-<<<<<<< HEAD
   "version": 9
-=======
-  "version": 0
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
 }

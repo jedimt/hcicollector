@@ -322,18 +322,11 @@
       "panels": [
         {
           "aliasColors": {},
-<<<<<<< HEAD
           "bars": false,
           "dashLength": 10,
           "dashes": false,
           "datasource": "${DS_GRAPHITE-DB}",
           "decimals": 0,
-=======
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
           "editable": true,
           "error": false,
           "fill": 0,
@@ -367,7 +360,6 @@
           "targets": [
             {
               "hide": false,
-<<<<<<< HEAD
               "refId": "A",
               "target": "alias(perSecond(summarize(netapp.solidfire.cluster.$Cluster.node.$Node.sBytesIn, '1m', 'sum', false)), 'In')",
               "textEditor": false
@@ -376,10 +368,6 @@
               "hide": false,
               "refId": "B",
               "target": "alias(perSecond(summarize(netapp.solidfire.cluster.$Cluster.node.$Node.sBytesOut, '1m', 'sum', false)), 'Out')",
-=======
-              "refId": "B",
-              "target": "aliasByMetric(scaleToSeconds(perSecond(keepLastValue(netapp.solidfire.cluster.$Cluster.node.$Node.sBytesIn, 100)), 1))",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
               "textEditor": false
             }
           ],
@@ -472,20 +460,12 @@
           "targets": [
             {
               "refId": "A",
-<<<<<<< HEAD
               "target": "alias(perSecond(summarize(netapp.solidfire.cluster.$Cluster.node.$Node.mBytesIn, '1m', 'sum', false)), 'In')",
-=======
-              "target": "alias(scaleToSeconds(perSecond(keepLastValue(netapp.solidfire.cluster.$Cluster.node.$Node.mBytesIn, 100)), 1), 'In')",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
               "textEditor": false
             },
             {
               "refId": "B",
-<<<<<<< HEAD
               "target": "alias(perSecond(summarize(netapp.solidfire.cluster.$Cluster.node.$Node.mBytesOut, '1m', 'sum', false)), 'Out')",
-=======
-              "target": "alias(scaleToSeconds(perSecond(keepLastValue(netapp.solidfire.cluster.$Cluster.node.$Node.mBytesOut, 100)), 1), 'Out')",
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
               "textEditor": false
             }
           ],
@@ -615,9 +595,5 @@
   },
   "timezone": "browser",
   "title": "solidfire-node",
-<<<<<<< HEAD
-  "version": 11
-=======
-  "version": 0
->>>>>>> 43c1696e2e70ad1e1b6054c0188e5cd1a03850dd
+  "version": 12
 }
