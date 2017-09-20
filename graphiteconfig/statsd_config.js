@@ -4,4 +4,5 @@
 , port: 8125
 , backends: [ "./backends/graphite" ]
 , flushInterval: 5000
+, deleteIdleStats: "true"
 }
