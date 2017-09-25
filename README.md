@@ -5,15 +5,11 @@ SFcollector is a containerized collector for SolidFire clusters and is based off
 * [graphite-docker](https://github.com/jmreicha/graphite-docker) Graphite and Grafana containers
 
 # Current Release
-v .2 (beta)
+v .3 (beta)
 
-## Updates in .2
-* Added "&" in wrapper.sh script to make the collector calls async. Previously the script was waiting for the collector script to finish before continuing the loop. This caused the time between collections to stack which caused holes in the dataset. Now stats should be returned every minute.
-* Changed graphs to use the summerize function for better accuracy.
-
-### Planned work for .3 release
-* Change to new performance counters to be introduced in Element OS 10.
-* Changes to the collector script to improve scale and pull in additional metrics
+## Updates in .3
+* Changed the collector container to Alpine which dramatically cut down container size and build time.
+* Other minor changes
 
 # Description
 The SolidFire collector is a fully packaged metrics collection and graphing solution for Element OS 8+ based on three container. 

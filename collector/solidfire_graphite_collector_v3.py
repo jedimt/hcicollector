@@ -36,8 +36,9 @@ def send_cluster_stats(sf_element_factory, prefix):
    # monotonic = ['readOps', 'readBytes', 'writeOps', 'writeBytes'] 
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
-    print cluster_stats_dict
+    
     """
+    This seems to cause the collector to bomb out
     clusterUtilizationDec = to_num(result['clusterUtilization'])
     print clusterUtilizationDec
     clusterUtilizationScaled = (clusterUtilizationDec * 100)
@@ -46,20 +47,12 @@ def send_cluster_stats(sf_element_factory, prefix):
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
     """
+
     for key in metrics:
         if to_graphite:
             graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
         else:
             LOG.warning(key + ' ' + str(cluster_stats_dict[key]))
-    #for key in monotonic:
-    #    if to_graphite:
-    #        graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
-    #    else:
-    #        LOG.warning(key + ' ' + str(cluster_stats_dict[key]))
-            # Monotonically increasing counters split out so that we can later convert
-            # these to a rate and submit that rate as well.  Less work to display on
-            # Grafana dashboards.    Add code for t2 - t1 here.
-
 
 def send_cluster_capacity(sf_element_factory, prefix):
     """
