@@ -5,7 +5,11 @@ SFcollector is a containerized collector for SolidFire clusters and is based off
 * [graphite-docker](https://github.com/jmreicha/graphite-docker) Graphite and Grafana containers
 
 # Current Release
-v .1 (beta)
+v .3 (beta)
+
+## Updates in .3
+* Changed the collector container to Alpine which dramatically cut down container size and build time.
+* Other minor changes
 
 # Description
 The SolidFire collector is a fully packaged metrics collection and graphing solution for Element OS 8+ based on three container. 
@@ -15,7 +19,7 @@ The SolidFire collector is a fully packaged metrics collection and graphing solu
 
 The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp Docker Volume Plugin (NDVP) can be used for persistent storage of metrics on a NetApp system.
 
-![SFCollector architecture overview](http://www.jedimt.com/wp-content/uploads/2017/06/sfcollector-overview.jpeg)
+![SFCollector architecture overview](http://www.jedimt.com/wp-content/uploads/2017/09/sfcollector-overview.jpeg)
 
 ### Prerequisites
 
@@ -43,7 +47,7 @@ and a user name and password
 
 A more complete installation and configuration guide "SolidFireStatsCollectionwithGraphiteandGrafana.pdf" is included in the repository.
 
-## Authors
+## Author
 
 **Aaron Patten**
 

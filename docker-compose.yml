@@ -22,8 +22,8 @@ grafana:
     environment: #Set password for Grafana web interface
         - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
 
-sfcollector:
-    build: ./collector
+sfcollector-alpine:
+    build: ./collector-alpine
     restart: always
-    links:
+    links: 
         - graphite

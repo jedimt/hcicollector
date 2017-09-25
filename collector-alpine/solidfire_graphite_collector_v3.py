@@ -31,24 +31,28 @@ def send_cluster_stats(sf_element_factory, prefix):
     """
     send a subset of GetClusterStats API call results to graphite.
     """
-    metrics = ['clientQueueDepth', 'clusterUtilization']
-    monotonic = ['readOps', 'readBytes', 'writeOps', 'writeBytes']
+    metrics = ['clientQueueDepth', 'clusterUtilization', 'readOpsLastSample', 
+               'readBytesLastSample', 'writeOpsLastSample', 'writeBytesLastSample']
+   # monotonic = ['readOps', 'readBytes', 'writeOps', 'writeBytes'] 
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
+    
+    """
+    This seems to cause the collector to bomb out
+    clusterUtilizationDec = to_num(result['clusterUtilization'])
+    print clusterUtilizationDec
+    clusterUtilizationScaled = (clusterUtilizationDec * 100)
+    print clusterUtilizationScaled
+
+    if to_graphite:
+        graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
+    """
+
     for key in metrics:
         if to_graphite:
             graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
         else:
             LOG.warning(key + ' ' + str(cluster_stats_dict[key]))
-    for key in monotonic:
-        if to_graphite:
-            graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
-        else:
-            LOG.warning(key + ' ' + str(cluster_stats_dict[key]))
-            # Monotonically increasing counters split out so that we can later convert
-            # these to a rate and submit that rate as well.  Less work to display on
-            # Grafana dashboards.    Add code for t2 - t1 here.
-
 
 def send_cluster_capacity(sf_element_factory, prefix):
     """
@@ -139,12 +143,14 @@ def send_volume_stats(sf_element_factory, prefix):
                     'actualIOPS', 'averageIOPSize', 'throttle', 'burstIOPSCredit',
                     'clientQueueDepth', 'latencyUSec',
                     'writeBytes', 'writeOps', 'writeLatencyUSec', 'unalignedWrites',
-                    'readBytes', 'readOps', 'readLatencyUSec', 'unalignedReads']
+                    'readBytes', 'readOps', 'readLatencyUSec', 'unalignedReads',
+                    'readBytesLastSample', 'readOpsLastSample', 'writeBytesLastSample',
+                    'writeOpsLastSample']
 
-    volume_list = sf_element_factory.list_volumes().to_json()['volumes']
+    volume_list = sf_element_factory.list_volumes(include_virtual_volumes=False).to_json()['volumes']
     volinfo_by_id = list_to_dict(volume_list, key="volumeID")
 
-    volstats = sf_element_factory.list_volume_stats_by_volume().to_json()['volumeStats']
+    volstats = sf_element_factory.list_volume_stats_by_volume(include_virtual_volumes=False).to_json()['volumeStats']
     for vs_dict in volstats:
         vol_name = volinfo_by_id[vs_dict['volumeID']]['name']
         vol_accountID = volinfo_by_id[vs_dict['volumeID']]['accountID']
