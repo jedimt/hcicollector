@@ -1,6 +1,4 @@
-version: "2"
-services: 
-  graphite:
+graphite:
     build: ./graphiteconfig
     restart: always
     ports:
@@ -11,34 +9,21 @@ services:
         - "2004:2004"
     volumes: #Point to NDVP or local volumes
         - "/data/graphite-db:/opt/graphite/storage/whisper"
-    networks:
-        - net_sfcollector
-  grafana:
+
+grafana:
     image: grafana/grafana
     restart: always
     ports:
         - "80:3000"
     volumes: #Point to NDVP or local volumes
         - "/data/grafana:/var/lib/grafana"
-    networks:
-        - net_sfcollector
+    links:
+        - graphite
     environment: #Set password for Grafana web interface
         - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
 
-  sfcollector-alpine:
+sfcollector-alpine:
     build: ./collector-alpine
     restart: always
-    networks: 
-        - net_sfcollector
-  
-  vsphere-collector:
-    build: ./vsphere-graphite
-    networks:
-        - net_sfcollector
-    depends_on: 
+    links: 
         - graphite
-
-networks:
-  net_sfcollector:
-    driver: bridge
-
