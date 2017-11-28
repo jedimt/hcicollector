@@ -1,0 +1,60 @@
+{
+  "Domain": ".hci.local",
+  "Interval": 60,
+  "FlushSize": 100,
+  "VCenters": [
+    { "Username": "administrator@vsphere.local", "Password": "NetApp123!", "Hostname": "rtp-hci-vcsa.hci.local" }
+  ],
+  "Backend": {
+    "Type": "graphite",
+    "Hostname": "graphite",
+    "Port": 2003
+  },
+  "Metrics": [
+    { 
+      "ObjectType": [ "VirtualMachine", "HostSystem" ], 
+      "Definition": [
+        { "Metric": "cpu.usage.average", "Instances": "" },
+        { "Metric": "cpu.usage.maximum", "Instances": "" },
+        { "Metric": "cpu.usagemhz.average", "Instances": "" },
+        { "Metric": "cpu.usagemhz.maximum", "Instances": "" },
+        { "Metric": "cpu.totalCapacity.average", "Instances": "" },
+        { "Metric": "cpu.ready.summation", "Instances": "" },
+        { "Metric": "mem.usage.average", "Instances": "" },
+        { "Metric": "mem.usage.maximum", "Instances": "" },
+        { "Metric": "mem.consumed.average", "Instances": "" },
+        { "Metric": "mem.consumed.maximum", "Instances": "" },
+        { "Metric": "mem.active.average", "Instances": "" },
+        { "Metric": "mem.active.maximum", "Instances": "" },
+        { "Metric": "mem.vmmemctl.average", "Instances": "" },
+        { "Metric": "mem.vmmemctl.maximum", "Instances": "" },
+        { "Metric": "disk.commandsAveraged.average", "Instances": "*" },
+        { "Metric": "mem.totalCapacity.average", "Instances": "" }
+      ]
+    },
+    { 
+      "ObjectType": [ "VirtualMachine" ], 
+      "Definition": [
+        { "Metric": "virtualDisk.totalWriteLatency.average", "Instances": "*" },
+        { "Metric": "virtualDisk.totalWriteLatency.maximum", "Instances": "*" },
+        { "Metric": "virtualDisk.totalReadLatency.average", "Instances": "*" },
+        { "Metric": "virtualDisk.totalReadLatency.maximum", "Instances": "*" },
+        { "Metric": "virtualDisk.numberReadAveraged.average", "Instances": "*" },
+        { "Metric": "virtualDisk.numberWriteAveraged.average", "Instances": "*" },
+        { "Metric": "cpu.read.summation", "Instance": ""}
+      ]
+    },
+    { 
+      "ObjectType": [ "HostSystem" ], 
+      "Definition": [
+        { "Metric": "disk.maxTotalLatency.latest", "Instances": "" },
+        { "Metric": "disk.commandsAveraged.average", "Instances": "*" },
+        { "Metric": "disk.numberReadAveraged.average", "Instances": "*" },
+        { "Metric": "disk.numberWriteAveraged.average", "Instances": "*" },
+        { "Metric": "disk.capacity.usage.average", "Instances": "*" },
+        { "Metric": "mem.state.latest", "Instances": "" }
+
+      ]
+    }
+  ]
+}

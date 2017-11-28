@@ -1,0 +1,14 @@
+# definitive config file if present
+vsphere-graphite.json
+
+# binary file if generated
+vsphere-graphite
+
+#ignore saved files (i.e. nano)
+*.save
+
+#ignore file locks
+*.lock
+
+#vendor folder
+vendor/
