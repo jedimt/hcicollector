@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_GRAPHITE-DB",
-      "label": "graphite-db",
+      "name": "DS_GRAPHITE-SFCOLLECTOR",
+      "label": "graphite-sfcollector",
       "description": "",
       "type": "datasource",
       "pluginId": "graphite",
@@ -14,7 +14,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "4.3.2"
+      "version": "4.6.2"
     },
     {
       "type": "panel",
@@ -30,7 +30,17 @@
     }
   ],
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
   "editable": true,
   "gnetId": null,
@@ -49,7 +59,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -133,7 +143,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -222,7 +232,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -311,7 +321,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -400,7 +410,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -486,7 +496,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -589,7 +599,7 @@
       {
         "allValue": "*",
         "current": {},
-        "datasource": "${DS_GRAPHITE-DB}",
+        "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -679,5 +689,5 @@
   },
   "timezone": "browser",
   "title": "solidfire-volume-TopN",
-  "version": 9
+  "version": 1
 }

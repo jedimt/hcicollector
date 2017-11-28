@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_GRAPHITE-DB",
-      "label": "graphite-db",
+      "name": "DS_GRAPHITE-SFCOLLECTOR",
+      "label": "graphite-sfcollector",
       "description": "",
       "type": "datasource",
       "pluginId": "graphite",
@@ -14,7 +14,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "4.3.2"
+      "version": "4.6.2"
     },
     {
       "type": "panel",
@@ -42,7 +42,17 @@
     }
   ],
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
   "editable": true,
   "gnetId": null,
@@ -65,7 +75,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "format": "none",
@@ -145,7 +155,7 @@
               "value": "current"
             }
           ],
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fontSize": "100%",
@@ -210,7 +220,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "format": "percentunit",
@@ -304,7 +314,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "format": "percentunit",
@@ -398,7 +408,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "format": "percent",
@@ -483,7 +493,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -591,7 +601,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -623,7 +633,8 @@
               "bars": false,
               "lines": false,
               "pointradius": 1,
-              "points": true
+              "points": true,
+              "yaxis": 2
             }
           ],
           "spaceLength": 10,
@@ -706,7 +717,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_GRAPHITE-DB}",
+          "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -820,7 +831,7 @@
       {
         "allValue": "*",
         "current": {},
-        "datasource": "${DS_GRAPHITE-DB}",
+        "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -840,7 +851,7 @@
       {
         "allValue": "*",
         "current": {},
-        "datasource": "${DS_GRAPHITE-DB}",
+        "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
         "hide": 0,
         "includeAll": true,
         "label": null,
@@ -860,7 +871,7 @@
       {
         "allValue": "*",
         "current": {},
-        "datasource": "${DS_GRAPHITE-DB}",
+        "datasource": "${DS_GRAPHITE-SFCOLLECTOR}",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -910,5 +921,5 @@
   },
   "timezone": "browser",
   "title": "solidfire-volume",
-  "version": 13
+  "version": 3
 }
