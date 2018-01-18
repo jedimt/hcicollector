@@ -1,12 +1,12 @@
 #!/usr/bin/python
-# solidfire_graphite_collector_v2.py
+# solidfire_graphite_collector_v3.py
 #
-# Version 1.0.0
+# Version 1.0.3
 # Author: Aaron Patten
 # Original author: Colin Bieberstein
 # Original contributors: Pablo Luis Zorzoli, Davide Obbi
 #
-# Copyright  2017 NetApp, Inc. All Rights Reserved.
+# Copyright  2018 NetApp, Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
