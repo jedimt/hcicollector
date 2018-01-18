@@ -3,7 +3,7 @@
 SFcollector is a containerized collector for SolidFire clusters and is based off the following projects
 * [solidfire-graphite-collector](https://github.com/cbiebers/solidfire-graphite-collector) Original Python collector script 
 * [graphite-docker](https://github.com/jmreicha/graphite-docker) Graphite and Grafana containers
-* [vsphere-graphite] (https://github.com/cblomart/vsphere-graphite) vSphere collector for Graphite
+* [vsphere-graphite](https://github.com/cblomart/vsphere-graphite) vSphere collector for Graphite
 
 # Current Release
 v .4 (beta)
