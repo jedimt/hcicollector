@@ -37,17 +37,14 @@ def send_cluster_stats(sf_element_factory, prefix):
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
     
-    """
-    This seems to cause the collector to bomb out
-    clusterUtilizationDec = to_num(result['clusterUtilization'])
-    print clusterUtilizationDec
-    clusterUtilizationScaled = (clusterUtilizationDec * 100)
-    print clusterUtilizationScaled
+    clusterUtilizationDec = float(cluster_stats_dict['clusterUtilization'])
+    #print clusterUtilizationDec
+    #clusterUtilizationScaled = (clusterUtilizationDec * 100)
+    #print clusterUtilizationScaled
 
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
-    """
-
+    
     for key in metrics:
         if to_graphite:
             graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
@@ -283,11 +280,12 @@ try:
     sfe = ElementFactory.create(args.solidfire, args.username, args.password)
     sfe.timeout(15)
     cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
+    LOG.info("**************** MAIN: send_cluster_stats ****************")
     send_cluster_stats(sfe, cluster_name)
-    send_cluster_capacity(sfe, cluster_name)
-    send_node_stats(sfe, cluster_name + '.node')
-    send_volume_stats(sfe, cluster_name)
-    send_drive_stats(sfe, cluster_name)
+    #send_cluster_capacity(sfe, cluster_name)
+    #send_node_stats(sfe, cluster_name + '.node')
+    #send_volume_stats(sfe, cluster_name)
+    #send_drive_stats(sfe, cluster_name)
 except solidfire.common.ApiServerError as e:
     LOG.warning("ApiServerError: {0}".format(str(e)))
 except Exception as e:
