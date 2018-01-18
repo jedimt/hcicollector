@@ -38,9 +38,9 @@ def send_cluster_stats(sf_element_factory, prefix):
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
     
     clusterUtilizationDec = float(cluster_stats_dict['clusterUtilization'])
-    #print clusterUtilizationDec
-    #clusterUtilizationScaled = (clusterUtilizationDec * 100)
-    #print clusterUtilizationScaled
+    print clusterUtilizationDec
+    clusterUtilizationScaled = (clusterUtilizationDec * 100)
+    print clusterUtilizationScaled
 
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
@@ -280,7 +280,6 @@ try:
     sfe = ElementFactory.create(args.solidfire, args.username, args.password)
     sfe.timeout(15)
     cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
-    LOG.info("**************** MAIN: send_cluster_stats ****************")
     send_cluster_stats(sfe, cluster_name)
     send_cluster_capacity(sfe, cluster_name)
     send_node_stats(sfe, cluster_name + '.node')
