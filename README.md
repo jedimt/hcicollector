@@ -51,10 +51,6 @@ and a user name and password
 
 A more complete installation and configuration guide "SolidFireStatsCollectionwithGraphiteandGrafana.pdf" is included in the repository.
 
-
-## Ryan's Notes
-
-
 ## Author
 
 **Aaron Patten**
