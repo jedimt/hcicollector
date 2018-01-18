@@ -282,10 +282,10 @@ try:
     cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
     LOG.info("**************** MAIN: send_cluster_stats ****************")
     send_cluster_stats(sfe, cluster_name)
-    #send_cluster_capacity(sfe, cluster_name)
-    #send_node_stats(sfe, cluster_name + '.node')
-    #send_volume_stats(sfe, cluster_name)
-    #send_drive_stats(sfe, cluster_name)
+    send_cluster_capacity(sfe, cluster_name)
+    send_node_stats(sfe, cluster_name + '.node')
+    send_volume_stats(sfe, cluster_name)
+    send_drive_stats(sfe, cluster_name)
 except solidfire.common.ApiServerError as e:
     LOG.warning("ApiServerError: {0}".format(str(e)))
 except Exception as e:
