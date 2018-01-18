@@ -9,5 +9,8 @@ RUN curl -L https://github.com/cblomart/vsphere-graphite/releases/download/v0.4/
     rm /vsphere-graphite_linux_amd64_v0.4.tgz
 
 ADD vsphere-graphite.json /etc/vsphere-graphite.json
+ADD start-vsphere-graphite.sh /start-vsphere-graphite.sh 
 
-ENTRYPOINT [ "vsphere-graphite" ]
+#ENTRYPOINT [ "vsphere-graphite" ]
+ENTRYPOINT [ "/start-vsphere-graphite.sh" ]
+

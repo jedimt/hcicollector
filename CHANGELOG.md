@@ -1,9 +1,13 @@
 # Changelog
 
 # Current Release
-.v3 (beta)
+.v4 (beta)
 
 ## Changes for Current Release
+* Added a vSphere collector heavily based on cblomarts vsphere-graphite project. 
+* Added dashboards specific to vSphere and VM metrics (still a work in progress) 
+
+## Updates in .3
 * Changed the collector container to Alpine which dramatically cut down container size and build time.
 * Other minor changes
 

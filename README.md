@@ -3,18 +3,21 @@
 SFcollector is a containerized collector for SolidFire clusters and is based off the following projects
 * [solidfire-graphite-collector](https://github.com/cbiebers/solidfire-graphite-collector) Original Python collector script 
 * [graphite-docker](https://github.com/jmreicha/graphite-docker) Graphite and Grafana containers
+* [vsphere-graphite] (https://github.com/cblomart/vsphere-graphite) vSphere collector for Graphite
 
 # Current Release
-v .3 (beta)
+v .4 (beta)
 
-## Updates in .3
-* Changed the collector container to Alpine which dramatically cut down container size and build time.
-* Other minor changes
+## Updates in .4
+* Added a vSphere collectored based heavily on the work of cblomart's vsphere-graphite collector
+* Dashboard updates
+* New dashboards for vSphere components 
 
 # Description
-The SolidFire collector is a fully packaged metrics collection and graphing solution for Element OS 8+ based on three container. 
-* SFCollector-> runs a python script to scrape results from SolidFire clusters 
+The SFCollector is a fully packaged metrics collection and graphing solution for Element OS 8+ based on three container. 
+* SFCollector -> runs a python script to scrape results from SolidFire clusters 
 * Graphite database -> keeps all time series data from the SFCollector
+* vsphere-graphite -> Pulls in vCenter metrics
 * Grafana -> Graphing engine
 
 The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp Docker Volume Plugin (NDVP) can be used for persistent storage of metrics on a NetApp system.
@@ -38,6 +41,7 @@ The collector stores metrics in graphite and presents those metrics through a se
 *Run the bootstrap.sh script (`./bootstrap.sh`)
 *Modify the collector/wrapper.sh script supplying the SolidFire MVIP address,
 and a user name and password
+*Modify vsphere-graphite.json with your vCenter credentials and IP address 
 *Modify docker-compose.yml to point at persistent storage volumes  
 *Start up the containers (`docker-compose up`)
 **Or in detached mode (`docker-compose up -d`)
@@ -59,5 +63,5 @@ A more complete installation and configuration guide "SolidFireStatsCollectionwi
 
 ## Acknowledgments
 
-* This would not have been possible if not for the prior work of cbiebers and jmreicha
+* This would not have been possible if not for the prior work of cblocmart, cbiebers and jmreicha
 
