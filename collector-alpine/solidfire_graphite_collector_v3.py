@@ -37,17 +37,14 @@ def send_cluster_stats(sf_element_factory, prefix):
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
     
-    """
-    This seems to cause the collector to bomb out
-    clusterUtilizationDec = to_num(result['clusterUtilization'])
+    clusterUtilizationDec = float(cluster_stats_dict['clusterUtilization'])
     print clusterUtilizationDec
     clusterUtilizationScaled = (clusterUtilizationDec * 100)
     print clusterUtilizationScaled
 
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
-    """
-
+    
     for key in metrics:
         if to_graphite:
             graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))

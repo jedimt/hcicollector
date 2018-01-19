@@ -39,7 +39,7 @@ The collector stores metrics in graphite and presents those metrics through a se
 *Clone this repo ('git clone https://github.com/jedimt/sfcollector')
 *Modify bootstrap.sh script (`cd sfcollector && chmod +x bootstrap.sh`)
 *Run the bootstrap.sh script (`./bootstrap.sh`)
-*Modify the collector/wrapper.sh script supplying the SolidFire MVIP address,
+*Modify the collector-alpine/wrapper.sh script supplying the SolidFire MVIP address,
 and a user name and password
 *Modify vsphere-graphite.json with your vCenter credentials and IP address 
 *Modify docker-compose.yml to point at persistent storage volumes  
