@@ -32,15 +32,15 @@ def send_cluster_stats(sf_element_factory, prefix):
     send a subset of GetClusterStats API call results to graphite.
     """
     metrics = ['clientQueueDepth', 'clusterUtilization', 'readOpsLastSample', 
-               'readBytesLastSample', 'writeOpsLastSample', 'writeBytesLastSample']
-   # monotonic = ['readOps', 'readBytes', 'writeOps', 'writeBytes'] 
+               'readBytesLastSample', 'writeOpsLastSample', 'writeBytesLastSample',
+               'actualIOPS', 'latencyUSec', 'normalizedIOPS', 'readBytes',
+               'readLatencyUSec', 'readOps', 'unalignedReads', 'unalignedWrites',
+               'writeLatencyUSec', 'writeOps', 'writeBytes']
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
     
     clusterUtilizationDec = float(cluster_stats_dict['clusterUtilization'])
-    print clusterUtilizationDec
-    clusterUtilizationScaled = (clusterUtilizationDec * 100)
-    print clusterUtilizationScaled
+    clusterUtilizationScaled = clusterUtilizationDec
 
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
@@ -94,7 +94,8 @@ def send_cluster_capacity(sf_element_factory, prefix):
     else:
         LOG.warning('dedupe_factor ' + str(dedupe_factor))
     if unique_blocks_used_space != 0:
-        compression_factor = (unique_blocks * 4096.0) / unique_blocks_used_space
+        #compression_factor = (unique_blocks * 4096.0) / unique_blocks_used_space
+        compression_factor = (unique_blocks * 4096.0) / (unique_blocks_used_space * .93)
     else:
         compression_factor = 1
     if to_graphite:
