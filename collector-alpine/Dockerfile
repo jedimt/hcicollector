@@ -4,7 +4,8 @@ FROM alpine
 MAINTAINER aaron.patten@netapp.com
 RUN apk update \
        && apk add py-pip git bash 
-RUN pip install solidfire-sdk-python==1.4.0.271
+#RUN pip install solidfire-sdk-python==1.4.0.271
+RUN pip install solidfire-sdk-python==1.5.0.87.post1
 RUN pip install requests graphyte logging
 ADD solidfire_graphite_collector_v3.py /solidfire_graphite_collector_v3.py
 ADD wrapper.sh /wrapper.sh
