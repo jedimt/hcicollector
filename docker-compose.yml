@@ -33,6 +33,7 @@ services:
   
   vsphere-collector:
     build: ./vsphere-graphite
+    restart: always
     networks:
         - net_sfcollector
     depends_on: 
