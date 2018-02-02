@@ -40,7 +40,7 @@ and a user name and password
 *Modify docker-compose.yml to point at persistent storage volumes (either on docker host or via Trident)  
 *Start up the containers (`docker-compose up`)
 **Or in detached mode (`docker-compose up -d`)
-*Add the graphite data source to Grafana
+*Add the graphite data source to Grafana (user is 'graphite')
 *Add the preconfigured Grafana dashboards from the 'dashboards' directory or from grafana.com
 ```
 
