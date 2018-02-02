@@ -117,7 +117,7 @@ def send_node_stats(sf_element_factory, prefix):
     """
     metrics_list = ['cpu', 'usedMemory', 'networkUtilizationStorage',
                     'networkUtilizationCluster', 'cBytesOut', 'cBytesIn', 'sBytesOut',
-                    'sBytesIn', 'mBytesOut', 'mBytesIn']
+                    'sBytesIn', 'mBytesOut', 'mBytesIn', 'readOps', 'writeOps']
 
     node_list = sf_element_factory.list_all_nodes().to_json()['nodes']
     nodeinfo_by_id = list_to_dict(node_list, key="nodeID")

@@ -26,10 +26,9 @@
 
 while true
 do
- /usr/bin/python /solidfire_graphite_collector_v3.py -s 10.193.136.240 -u admin -p SolidF1r3! -g graphite &
+ /usr/bin/python /solidfire_graphite_collector_v3.py -s 10.193.136.240 -u admin -p netapp123 -g graphite &
+ /usr/bin/python /solidfire_graphite_collector_v3.py -s 10.193.136.241 -u admin -p netapp123 -g graphite &
  
-#To monitor additional clusters add another line
- #/usr/bin/python /solidfire_graphite_collector_v3.py -s 172.27.40.205 -u admin -p solidfire -g graphite &
 sleep 60
 done
 
