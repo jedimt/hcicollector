@@ -1,11 +1,17 @@
 # Changelog
 
 # Current Release
-.v4 (beta)
+.v5 (beta)
 
 ## Changes for Current Release
-* Added a vSphere collector heavily based on cblomarts vsphere-graphite project. 
-* Added dashboards specific to vSphere and VM metrics (still a work in progress) 
+* Extensive dashboard updates. Dashboards now available on [grafana.com](https://grafana.com/dashboards?search=HCI)
+* Added additional metrics to collection
+* Updated to Trident from NDVP for persistent storage 
+
+## Updates in .4
+* Added a vSphere collectored based heavily on the work of cblomart's vsphere-graphite collector
+* Dashboard updates
+* New dashboards for vSphere components 
 
 ## Updates in .3
 * Changed the collector container to Alpine which dramatically cut down container size and build time.
