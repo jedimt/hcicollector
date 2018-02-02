@@ -7,7 +7,7 @@ then
     echo "Enter a password for the graphite user"
     read passwd
     basic_auth=$(openssl passwd -crypt $passwd)
-    echo "graphite:$basic_auth" >> ./graphiteconfig/basic_auth
+    echo "graphite:$basic_auth" > ./graphiteconfig/basic_auth
 else
     echo "$file file already exists.  Did you already run this?"
 fi

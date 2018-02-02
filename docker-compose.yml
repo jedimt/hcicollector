@@ -10,7 +10,8 @@ services:
         - "2003:2003"
         - "2004:2004"
     volumes: #Point to NDVP or local volumes
-        - "/data/graphite-db:/opt/graphite/storage/whisper"
+        - graphite-db:/opt/graphite/storage/whisper
+        #- /data/graphite-db:/opt/graphite/storage/whisper #This is a local volume
     networks:
         - net_sfcollector
   grafana:
@@ -19,7 +20,8 @@ services:
     ports:
         - "80:3000"
     volumes: #Point to NDVP or local volumes
-        - "/data/grafana:/var/lib/grafana"
+        - grafana:/var/lib/grafana
+        #- /data/grafana:/var/lib/grafana #This is a local volume
     networks:
         - net_sfcollector
     environment: #Set password for Grafana web interface
@@ -33,6 +35,7 @@ services:
   
   vsphere-collector:
     build: ./vsphere-graphite
+    restart: always
     networks:
         - net_sfcollector
     depends_on: 
@@ -41,4 +44,10 @@ services:
 networks:
   net_sfcollector:
     driver: bridge
+
+volumes:
+  graphite-db:
+    external: true
+  grafana:
+    external: true
 
