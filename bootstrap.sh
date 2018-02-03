@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set up basic_auth
-file=basic_auth
+file=./graphiteconfig/basic_auth
 if [ ! -f $file ]
 then
     echo "Enter a password for the graphite user"
