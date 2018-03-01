@@ -97,7 +97,8 @@
             {
               "hide": false,
               "refId": "B",
-              "target": "aliasByNode(highestAverage(vsphere.$vcenter.hostsystem.$Host.cpu.usagemhz.average, $TopN), 3)"
+              "target": "aliasByNode(highestAverage(vsphere.$vcenter.hostsystem.$Host.cpu.usagemhz.average, $TopN), 3)",
+              "textEditor": false
             }
           ],
           "thresholds": [],
@@ -583,5 +584,5 @@
   },
   "timezone": "",
   "title": "NetApp HCI - vSphere ESXi Metrics",
-  "version": 1
+  "version": 2
 }
