@@ -1,3 +1,4 @@
+docker-compose.yml
 export-dashboards.sh
 graphiteconfig/basic_auth
 dashboards/netapp-hci-esxi-storage.json

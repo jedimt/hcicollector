@@ -3,7 +3,7 @@
   "Interval": 60,
   "FlushSize": 100,
   "VCenters": [
-    { "Username": "administrator@sflab.local", "Password": "<password>", "Hostname": "sfps-vcsa.rtp.openenglab.netapp.com" }
+    { "Username": "administrator@sflab.local", "Password": "SolidF1r3!", "Hostname": "sfps-vcsa.rtp.openenglab.netapp.com" }
   ],
   "Backend": {
     "Type": "graphite",

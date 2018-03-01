@@ -25,7 +25,7 @@ services:
     networks:
         - net_sfcollector
     environment: #Set password for Grafana web interface
-        - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
+        - GF_SECURITY_ADMIN_PASSWORD=<your password>
 
   sfcollector-alpine:
     build: ./collector-alpine
