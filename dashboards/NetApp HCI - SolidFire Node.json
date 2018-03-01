@@ -668,7 +668,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -698,5 +698,5 @@
   },
   "timezone": "browser",
   "title": "NetApp HCI - SolidFire Node",
-  "version": 1
+  "version": 2
 }
