@@ -27,6 +27,27 @@ import solidfire.common
 import logging
 
 
+def send_cluster_faults(sf_element_factory, prefix):
+    """
+    send active cluster fault counts by: warning, error, critical
+    exclude best practices, and only include current faults
+    """
+    fault_list = sf_element_factory.list_cluster_faults(False,"current").to_json()['faults']
+    group = {'critical':0, 'error':0, 'warning':0 }
+    for d in fault_list:
+        if d['severity'] not in group:
+            group[ d['severity'] ] = 1
+        else:
+            group[ d['severity'] ] += 1
+
+    if to_graphite:
+        for key in group:
+            graphyte.send(prefix + '.fault.' + key, to_num(group[key]))
+    else:
+        for key in group:
+            LOG.warning('fault.' + key, str(to_num(group[key])))
+
+
 def send_cluster_stats(sf_element_factory, prefix):
     """
     send a subset of GetClusterStats API call results to graphite.
@@ -282,6 +303,7 @@ try:
     sfe.timeout(15)
     cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
     send_cluster_stats(sfe, cluster_name)
+    send_cluster_faults(sfe, cluster_name)
     send_cluster_capacity(sfe, cluster_name)
     send_node_stats(sfe, cluster_name + '.node')
     send_volume_stats(sfe, cluster_name)
