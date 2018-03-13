@@ -10,7 +10,7 @@ services:
         - "2003:2003"
         - "2004:2004"
     volumes: #Point to NDVP or local volumes
-        - graphite-db:/opt/graphite/storage/whisper
+        - graphite-db-dev:/opt/graphite/storage/whisper
         #- /data/graphite-db:/opt/graphite/storage/whisper #This is a local volume
     networks:
         - net_sfcollector
@@ -20,12 +20,18 @@ services:
     ports:
         - "80:3000"
     volumes: #Point to NDVP or local volumes
-        - grafana:/var/lib/grafana
+        - grafana-dev:/var/lib/grafana
+        #- grafana-conf:/etc/grafana
         #- /data/grafana:/var/lib/grafana #This is a local volume
     networks:
         - net_sfcollector
     environment: #Set password for Grafana web interface
         - GF_SECURITY_ADMIN_PASSWORD=<your password>
+        - GF_SMTP_ENABLED=true
+        - GF_SMTP_HOST=smtp.gmail.com:465
+        - GF_SMTP_USER=<email address>
+        - GF_SMTP_PASSWORD=<email password>
+        - GF_SMTP_SKIP_VERIFY=true
 
   sfcollector-alpine:
     build: ./collector-alpine
@@ -46,8 +52,10 @@ networks:
     driver: bridge
 
 volumes:
-  graphite-db:
+  graphite-db-dev:
     external: true
-  grafana:
+  #grafana-conf:
+  #  external: true
+  grafana-dev:
     external: true
 
