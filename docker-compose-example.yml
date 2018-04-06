@@ -15,7 +15,7 @@ services:
     networks:
         - net_sfcollector
   grafana:
-    image: grafana/grafana
+    build: ./grafana
     restart: always
     ports:
         - "80:3000"
@@ -25,13 +25,13 @@ services:
         #- /data/grafana:/var/lib/grafana #This is a local volume
     networks:
         - net_sfcollector
-    environment: #Set password for Grafana web interface
-        - GF_SECURITY_ADMIN_PASSWORD=<your password>
-        - GF_SMTP_ENABLED=true
-        - GF_SMTP_HOST=smtp.gmail.com:465
-        - GF_SMTP_USER=<email address>
-        - GF_SMTP_PASSWORD=<email password>
-        - GF_SMTP_SKIP_VERIFY=true
+    environment: 
+        - GF_SECURITY_ADMIN_PASSWORD=<your password> #Grafana password
+        - GF_SMTP_ENABLED=true                       #Enable SMTP (optional)
+        - GF_SMTP_HOST=smtp.gmail.com:465            #SMTP server (optional)
+        - GF_SMTP_USER=<email address>               #SMTP email account (optional)
+        - GF_SMTP_PASSWORD=<email password>          #SMTP email password (optional)
+        - GF_SMTP_SKIP_VERIFY=true                   #Skip email verification (optional)
 
   sfcollector-alpine:
     build: ./collector-alpine

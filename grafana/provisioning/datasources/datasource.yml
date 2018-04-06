@@ -1,0 +1,16 @@
+apiVersion: 1
+
+datasources:
+  - name: graphitedb
+    type: graphite
+    access: proxy
+    orgId: 1
+    url: http://10.193.136.36:8080
+    user: graphite
+    password: P@ssw0rd
+    isDefault: true
+    version: 1
+    editable: true
+    basicAuth: true
+    basicAuthUser: graphite
+    basicAuthPassword: P@ssw0rd 

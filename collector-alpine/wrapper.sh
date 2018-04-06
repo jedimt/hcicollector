@@ -28,7 +28,7 @@ while true
 do
  /usr/bin/python /solidfire_graphite_collector.py -s 10.193.136.240 -u grafana -p netapp123 -g graphite &
  /usr/bin/python /solidfire_graphite_collector.py -s 10.193.136.241 -u admin -p netapp123 -g graphite &
- 
+ /usr/bin/python /solidfire_graphite_collector.py -s 10.193.139.39 -u netapp -p NetApp123! -g graphite &
 sleep 60
 done
 
