@@ -19,10 +19,6 @@ services:
     restart: always
     ports:
         - "80:3000"
-    volumes: #Point to NDVP or local volumes
-        - grafana-dev:/var/lib/grafana
-        #- grafana-conf:/etc/grafana
-        #- /data/grafana:/var/lib/grafana #This is a local volume
     networks:
         - net_sfcollector
     environment: 
@@ -54,8 +50,3 @@ networks:
 volumes:
   graphite-db-dev:
     external: true
-  #grafana-conf:
-  #  external: true
-  grafana-dev:
-    external: true
-
