@@ -10,7 +10,7 @@
 * Added the ability to poll for active alerts in the "SolidFire Cluster" dashboard. 
 * Added support for email alerting based on SolidFire events. Note: alerting queries do not support templating variables so if you have multiple clusters you will need to use "*" for the cluster instance instead of the "$Cluster" variable. The net effect of this is that the alert pane will show alerts from ALL clusters instead of an individually selected cluster. 
 * New detailed install document
-
+* Added a very basic installation script
 
 ## Updates in .5
 * Extensive dashboard updates. Dashboards now available on [grafana.com](https://grafana.com/dashboards?search=HCI)

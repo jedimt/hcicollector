@@ -50,7 +50,7 @@ COPY graphite-api.yaml /etc/graphite-api.yaml
 COPY uwsgi.conf /etc/uwsgi.conf
 # nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY basic_auth /etc/nginx/basic_auth
+#COPY basic_auth /etc/nginx/basic_auth
 
 # nginx
 EXPOSE 80 \

@@ -3,12 +3,17 @@
 The SolidFire collector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
 
 # Current Release
-v .5 (beta)
+v .6 (beta)
 
-## Updates in .5
-* Extensive dashboard updates. Dashboards now available on [grafana.com](https://grafana.com/dashboards?search=HCI)
-* Added additional metrics to collection
-* Updated to Trident from NDVP for persistent storage 
+## Updates in .6
+* Retooled for Grafana 5.0.0
+* Dashboards and datasources are now automatically added through the new provisioning functionality in Grafana 5
+* Removed the external volume for the Grafana container, only Graphite uses an (optional) external iSCSI volume for persistent data
+* Added the ability to poll for active alerts in the "SolidFire Cluster" dashboard.
+* Added support for email alerting based on SolidFire events. Note: alerting queries do not support templating variables so if you have multiple clusters you will need to use "*" for the cluster instance instead of the "$Cluster" variable. The net effect of this is that the alert pane will show alerts from ALL clusters instead of an individually selected cluster.
+* New detailed install document
+* Added a very basic installation script
+
 See the changelog for updates in previous versions
 
 # Description
@@ -29,19 +34,10 @@ The collector stores metrics in graphite and presents those metrics through a se
 ## Quick and Dirty Installation and Configuration
 
 ```
-*(Optional) Install NetApp Trident
-*Download and install docker-compose ('sudo pip install -U docker-compose)
-*Clone this repo ('git clone https://github.com/jedimt/sfcollector')
-*Modify bootstrap.sh script (`cd sfcollector && chmod +x bootstrap.sh`)
-*Run the bootstrap.sh script (`./bootstrap.sh`)
-*Modify the ./collector-alpine/wrapper.sh script supplying the SolidFire MVIP address,
-and a user name and password
-*Rename ./vsphere-collector/vsphere-graphite-example.json to vsphere-graphite.json and modify with your vCenter credentials and IP address 
-*Modify docker-compose.yml to point at persistent storage volumes (either on docker host or via Trident)  
+*Clone the https://github.com/jedimt/sfcollector Github repo 
+*Execute the install_hcicollector.sh script and provide the requested input
 *Start up the containers (`docker-compose up`)
 **Or in detached mode (`docker-compose up -d`)
-*Add the graphite data source to Grafana (user is 'graphite')
-*Add the preconfigured Grafana dashboards from the 'dashboards' directory or from grafana.com
 ```
 
 A more complete installation and configuration guide "SFCollector_Install_and_Configure.pdf" is included in the repository.

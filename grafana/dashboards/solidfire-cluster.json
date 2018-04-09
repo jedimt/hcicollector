@@ -43,7 +43,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -123,7 +123,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -202,7 +202,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -277,7 +277,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "fill": 1,
       "gridPos": {
         "h": 4,
@@ -389,7 +389,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -471,7 +471,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -554,7 +554,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "decimals": null,
       "editable": true,
       "error": false,
@@ -636,7 +636,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "editable": true,
       "error": false,
       "format": "none",
@@ -727,7 +727,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -818,7 +818,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -919,7 +919,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1014,7 +1014,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -1088,7 +1088,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "description": "CPU utilization of all SolidFire nodes in the selected cluster over time",
       "fill": 1,
       "gridPos": {
@@ -1166,7 +1166,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1258,7 +1258,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1356,7 +1356,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1437,7 +1437,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphitedb",
+      "datasource": "graphite-db",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1535,7 +1535,7 @@
           "text": "GHOSTRIDER",
           "value": "GHOSTRIDER"
         },
-        "datasource": "graphitedb",
+        "datasource": "graphite-db",
         "hide": 0,
         "includeAll": false,
         "label": "$cluster",

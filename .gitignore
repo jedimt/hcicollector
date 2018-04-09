@@ -1,5 +1,7 @@
 overview.pptx
 docker-compose.yml
-graphiteconfig/basic_auth
 export-dashboards.sh
 grafana/dashboards/system-dashboard.json
+install_hcicollector_answer.sh
+collector-alpine/wrapper.sh
+vsphere-graphite/vsphere-graphite.json

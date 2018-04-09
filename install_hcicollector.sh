@@ -1,7 +1,91 @@
 #Install HCI Collector####
-#Make configuration files
+
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+
+#Set some bash colors
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        #White
+
+####Trident install and configuration####
+#Read in variables
+echo -e ${Red} "Enter the SolidFire management virtual IP (MVIP): "
+read SFMVIP
+echo -e ${Red} "Enter the SolidFire storage virtual IP (SVIP): "
+read SFSVIP
+echo -e ${Red} "Enter the SolidFire username (case sensitive): "
+read SFUSER
+echo -e ${Red} "Enter the Solidfire password: "
+read -s SFPASSWORD
+echo -e ${Blue} "Enter the tenant account to use for Trident: "
+read TACCOUNT
+echo -e ${Blue} "Enter the volume name to create for Graphite"
+read GRAPHITEVOL
+echo -e ${Yellow} "Enter the password to use for the Grafana admin account: "
+read -s GPASSWORD
+echo -e ${Green} "Enter the vCenter username: "
+read VCENTERUSER
+echo -e ${Green} "Enter the vCenter password: "
+read -s VCENTERPASSWORD
+echo -e ${Green} "Enter the vCenter hostname. Ex. vcsa: "
+read VCENTERHOSTNAME
+echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
+read VCENTERDOMAIN
+
+
+#Create the Trident config file
+mkdir -p /etc/netappdvp
+
+cat << EOF > /etc/netappdvp/config.json
+{
+    "version": 1,
+    "storageDriverName": "solidfire-san",
+    "Endpoint": "https://$SFUSER:$SFPASSWORD@$SFMVIP/json-rpc/9.0",
+    "SVIP": "$SFSVIP:3260",
+    "TenantName": "$TACCOUNT",
+    "InitiatorIFace": "default",
+    "Types": [
+        {
+            "Type": "docker-default",
+            "Qos": {
+                "minIOPS": 1000,
+                "maxIOPS": 2000,
+                "burstIOPS": 4000
+            }
+        },
+        {
+            "Type": "docker-app",
+            "Qos": {
+                "minIOPS": 4000,
+                "maxIOPS": 6000,
+                "burstIOPS": 8000
+            }
+        },
+        {
+            "Type": "docker-db",
+            "Qos": {
+                "minIOPS": 6000,
+                "maxIOPS": 8000,
+                "burstIOPS": 10000
+            }
+        }
+    ]
+}
+EOF
+
+echo "Installing Trident and creating the graphite-db volume"
+#Install the Triedent plugin
+docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.01 config=config.json
+
+#Create the Docker volume for the Graphite database
+docker volume create -d netapp --name $GRAPHITEVOL -o type=docker-db -o size=50G
 
 #Dccker compose configuration
+echo "Creating the docker-compose.yml file"
 cat << EOF > /opt/github/sfcollector/docker-compose.yml
 version: "2"
 services:
@@ -15,12 +99,12 @@ services:
         - "2003:2003"
         - "2004:2004"
     volumes: #Trident or local volumes for persistent storage
-        - graphite-db:/opt/graphite/storage/whisper
+        - $GRAPHITEVOL:/opt/graphite/storage/whisper
     networks:
         - net_sfcollector
 
   grafana:
-    image: grafana/grafana
+    build: ./grafana
     restart: always
     ports:
         - "80:3000"
@@ -28,7 +112,7 @@ services:
         - net_sfcollector
     environment:
         #Set password for Grafana web interface
-        - GF_SECURITY_ADMIN_PASSWORD=<your password>
+        - GF_SECURITY_ADMIN_PASSWORD=$GPASSWORD
         #Optional SMTP configuration for alert queries
         #- GF_SMTP_ENABLED=true
         #- GF_SMTP_HOST=smtp.gmail.com:465
@@ -55,21 +139,28 @@ networks:
     driver: bridge
 
 volumes:
-  graphite-db:
+  $GRAPHITEVOL:
     external: true
 EOF
 
 #Wrapper script for the SolidFire collector
+echo "Creating the SolidFire collector wrapper.sh script"
 cat << EOF > /opt/github/sfcollector/collector-alpine/wrapper.sh
 #!/usr/bin/env bash
 while true
 do
-/usr/bin/python /solidfire_graphite_collector.py -s 10.193.136.240 -u admin -p solidfire -g graphite &
+/usr/bin/python /solidfire_graphite_collector.py -s $SFMVIP -u $SFUSER -p $SFPASSWORD -g graphite &
 sleep 60
 done
 EOF
 
+#Make the file executiable
+echo -e ${Cyan} "Marking wrapper.sh as executable"
+chmod a+x /opt/github/sfcollector/collector-alpine/wrapper.sh
+
+
 #Create the storage-schemas.conf file for Graphite
+echo "Creating the storage-schemas.conf file"
 cat << EOF > /opt/github/sfcollector/graphiteconfig/storage-schemas.conf
 [stats]
 pattern = ^stats\.*$
@@ -113,13 +204,14 @@ retentions = 1m:5d,1m:28d
 EOF
 
 #Create the vsphere-graphite.json file for the vSphere-Graphite collector
+echo "Creating the vsphere-graphite.json file"
 cat << EOF > /opt/github/sfcollector/vsphere-graphite/vsphere-graphite.json
 {
-  "Domain": ".rtp.openenglab.netapp.com",
+  "Domain": ".$VCENTERDOMAIN",
   "Interval": 60,
   "FlushSize": 100,
   "VCenters": [
-    { "Username": "administrator@sflab.local", "Password": "<password>", "Hostname": "sfps-vcsa.rtp.openenglab.netapp.com" }
+    { "Username": "$VCENTERUSER", "Password": "$VCENTERPASSWORD", "Hostname": "$VCENTERHOSTNAME" }
   ],
   "Backend": {
     "Type": "graphite",
@@ -152,12 +244,10 @@ cat << EOF > /opt/github/sfcollector/vsphere-graphite/vsphere-graphite.json
       "ObjectType": [ "VirtualMachine" ],
       "Definition": [
         { "Metric": "virtualDisk.totalWriteLatency.average", "Instances": "*" },
-        { "Metric": "virtualDisk.totalWriteLatency.maximum", "Instances": "*" },
         { "Metric": "virtualDisk.totalReadLatency.average", "Instances": "*" },
-        { "Metric": "virtualDisk.totalReadLatency.maximum", "Instances": "*" },
         { "Metric": "virtualDisk.numberReadAveraged.average", "Instances": "*" },
         { "Metric": "virtualDisk.numberWriteAveraged.average", "Instances": "*" },
-        { "Metric": "cpu.read.summation", "Instance": ""}
+        { "Metric": "cpu.ready.summation", "Instance": ""}
       ]
     },
     {
