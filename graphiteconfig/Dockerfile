@@ -2,6 +2,7 @@
 
 # Build from Ubuntu base
 FROM ubuntu:14.04.2
+#FROM ubuntu:16.04
 
 # This suppresses a bunch of annoying warnings from debconf
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,14 +13,10 @@ RUN \
   add-apt-repository -y ppa:chris-lea/node.js && \
   apt-get -qq update -y && \
   apt-get -qq install -y build-essential curl \
-    # Graphite dependencies
-    python-dev libcairo2-dev libffi-dev python-pip \
-    # Supervisor
-    supervisor \
-    # nginx + uWSGI
-    nginx uwsgi-plugin-python \
-    # StatsD
-    nodejs
+  python-dev libcairo2-dev libffi-dev python-pip \
+  supervisor \
+  nginx uwsgi-plugin-python \
+  nodejs
 
 # Install StatsD
 RUN \
@@ -53,18 +50,15 @@ COPY nginx.conf /etc/nginx/nginx.conf
 #COPY basic_auth /etc/nginx/basic_auth
 
 # nginx
+# Ports
+##Graphite API 8080; Carbon line receiver 2003; Cabon pickle receiver 2004; 
+##Carbon cache query 7002; StatsD UDP 8125; StatsD Admin 8126 
 EXPOSE 80 \
-# graphite-api
 8080 \
-# Carbon line receiver
 2003 \
-# Carbon pickle receiver
 2004 \
-# Carbon cache query
 7002 \
-# StatsD UDP
 8125 \
-# StatsD Admin
 8126
 
 # Launch stack
