@@ -296,3 +296,8 @@ datasources:
     basicAuth: false
 EOF
 
+#Change the "datasource": instance in the provisoined dashboards to match the GRAPHITEVOL
+echo "Modifying the default 'datasource' values in the pre-packeged dashboards"
+echo "Substituting $GRAPHITEVOL for 'graphite-db'"
+DASHBOARDS=$(ls grafana/dashboards/*.json)
+sed -i "s/graphite-db/$GRAPHITEVOL/g" $DASHBOARDS
