@@ -35,7 +35,8 @@ echo -e ${Green} "Enter the vCenter hostname. Ex. vcsa: "
 read VCENTERHOSTNAME
 echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
 read VCENTERDOMAIN
-
+echo -e ${Purple} "Enter the IP address of this Docker host: "
+read DOCKERIP
 
 #Create the Trident config file
 mkdir -p /etc/netappdvp
@@ -279,3 +280,19 @@ cat << EOF > /opt/github/sfcollector/vsphere-graphite/vsphere-graphite.json
   ]
 }
 EOF
+
+#Create the datasource.yml file for the dashboards
+cat << EOF > /opt/github/sfcollector/grafana/provisioning/datasources/datasource.yml
+apiVersion: 1
+datasources:
+  - name: $GRAPHITEVOL
+    type: graphite
+    access: proxy
+    orgId: 1
+    url: http://$DOCKERIP:8080
+    isDefault: true
+    version: 1
+    editable: true
+    basicAuth: false
+EOF
+
