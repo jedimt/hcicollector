@@ -37,6 +37,7 @@ echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
 read VCENTERDOMAIN
 echo -e ${Purple} "Enter the IP address of this Docker host: "
 read DOCKERIP
+echo -e ${White} "Beginning Install"
 
 #Create the Trident config file
 mkdir -p /etc/netappdvp
@@ -304,4 +305,5 @@ EOF
 echo "Modifying the default 'datasource' values in the pre-packeged dashboards"
 echo "Substituting $GRAPHITEVOL for 'graphite-db'"
 DASHBOARDS=$(ls grafana/dashboards/*.json)
-sed -i "s/graphite-db/$GRAPHITEVOL/g" $DASHBOARDS
+#sed -i "s/graphite-db/$GRAPHITEVOL/g" $DASHBOARDS
+sed -i '/-- Grafana --/b; s/\("datasource": "\).*\(".*$\)/\1'$GRAPHITEVOL'\2/g' $DASHBOARDS

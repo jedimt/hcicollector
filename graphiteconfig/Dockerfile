@@ -13,10 +13,14 @@ RUN \
   add-apt-repository -y ppa:chris-lea/node.js && \
   apt-get -qq update -y && \
   apt-get -qq install -y build-essential curl \
-  python-dev libcairo2-dev libffi-dev python-pip \
-  supervisor \
-  nginx uwsgi-plugin-python \
-  nodejs
+    # Graphite dependencies
+    python-dev libcairo2-dev libffi-dev python-pip \
+    # Supervisor
+    supervisor \
+    # nginx + uWSGI
+    nginx uwsgi-plugin-python \
+    # StatsD
+    nodejs
 
 # Install StatsD
 RUN \
@@ -54,11 +58,17 @@ COPY nginx.conf /etc/nginx/nginx.conf
 ##Graphite API 8080; Carbon line receiver 2003; Cabon pickle receiver 2004; 
 ##Carbon cache query 7002; StatsD UDP 8125; StatsD Admin 8126 
 EXPOSE 80 \
+# graphite-api
 8080 \
+# Carbon line receiver
 2003 \
+# Carbon pickle receiver
 2004 \
+# Carbon cache query
 7002 \
+# StatsD UDP
 8125 \
+# StatsD Admin
 8126
 
 # Launch stack
