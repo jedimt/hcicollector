@@ -92,6 +92,7 @@ version: "2"
 services:
   graphite:
     build: ./graphiteconfig
+    container_name: graphite-v.6
     restart: always
     ports:
         - "8080:80"
@@ -106,6 +107,7 @@ services:
 
   grafana:
     build: ./grafana
+    container_name: grafana-v.6
     restart: always
     ports:
         - "80:3000"
@@ -123,12 +125,14 @@ services:
 
   sfcollector-alpine:
     build: ./collector-alpine
+    container_name: sfcollector-v.6
     restart: always
     networks:
         - net_sfcollector
 
   vsphere-collector:
     build: ./vsphere-graphite
+    container_name: vsphere-graphite-v.6
     restart: always
     networks:
         - net_sfcollector
