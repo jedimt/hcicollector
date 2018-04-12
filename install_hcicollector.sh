@@ -303,7 +303,5 @@ EOF
 
 #Change the "datasource": instance in the provisoined dashboards to match the GRAPHITEVOL
 echo "Modifying the default 'datasource' values in the pre-packeged dashboards"
-echo "Substituting $GRAPHITEVOL for 'graphite-db'"
 DASHBOARDS=$(ls grafana/dashboards/*.json)
-#sed -i "s/graphite-db/$GRAPHITEVOL/g" $DASHBOARDS
 sed -i '/-- Grafana --/b; s/\("datasource": "\).*\(".*$\)/\1'$GRAPHITEVOL'\2/g' $DASHBOARDS
