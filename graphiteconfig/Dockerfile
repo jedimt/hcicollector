@@ -26,9 +26,11 @@ RUN \
 RUN \
   mkdir -p /opt && \
   cd /opt && \
-  curl -sLo statsd.tar.gz https://github.com/etsy/statsd/archive/v0.7.2.tar.gz && \
+  #curl -sLo statsd.tar.gz https://github.com/etsy/statsd/archive/v0.7.2.tar.gz && \
+  curl -sLo statsd.tar.gz https://github.com/etsy/statsd/archive/v0.8.0.tar.gz && \
   tar -xzf statsd.tar.gz && \
-  mv statsd-0.7.2 statsd
+  #mv statsd-0.7.2 statsd
+  mv statsd-0.8.0 statsd
 
 # Install Python packages for Graphite
 RUN pip install graphite-api[sentry] whisper carbon
