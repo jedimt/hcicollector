@@ -88,7 +88,7 @@ docker volume create -d netapp --name $GRAPHITEVOL -o type=docker-db -o size=50G
 
 #Dccker compose configuration
 echo "Creating the docker-compose.yml file"
-cat << EOF > /opt/github/hcicollector/docker-compose.yml
+cat << EOF > ./docker-compose.yml
 version: "2"
 services:
   graphite:
@@ -151,7 +151,7 @@ EOF
 
 #Wrapper script for the SolidFire collector
 echo "Creating the SolidFire collector wrapper.sh script"
-cat << EOF > /opt/github/sfcollector/collector-alpine/wrapper.sh
+cat << EOF > ./sfcollector/wrapper.sh
 #!/usr/bin/env bash
 while true
 do
@@ -162,12 +162,12 @@ EOF
 
 #Make the file executiable
 echo -e ${Cyan} "Marking wrapper.sh as executable"
-chmod a+x /opt/github/sfcollector/collector-alpine/wrapper.sh
+chmod a+x ./sfcollector/wrapper.sh
 
 
 #Create the storage-schemas.conf file for Graphite
 echo "Creating the storage-schemas.conf file"
-cat << EOF > /opt/github/sfcollector/graphiteconfig/storage-schemas.conf
+cat << EOF > ./graphite/storage-schemas.conf
 [stats]
 pattern = ^stats\.*$
 retentions = 5s:1d,1m:7d
@@ -211,7 +211,7 @@ EOF
 
 #Create the vsphere-graphite.json file for the vSphere-Graphite collector
 echo "Creating the vsphere-graphite.json file"
-cat << EOF > /opt/github/sfcollector/vsphere-graphite/vsphere-graphite.json
+cat << EOF > ./vsphere-graphite/vsphere-graphite.json
 {
   "Domain": ".$VCENTERDOMAIN",
   "Interval": 60,
@@ -287,7 +287,7 @@ cat << EOF > /opt/github/sfcollector/vsphere-graphite/vsphere-graphite.json
 EOF
 
 #Create the datasource.yml file for the dashboards
-cat << EOF > /opt/github/sfcollector/grafana/provisioning/datasources/datasource.yml
+cat << EOF > ./grafana/provisioning/datasources/datasource.yml
 apiVersion: 1
 datasources:
   - name: $GRAPHITEVOL
