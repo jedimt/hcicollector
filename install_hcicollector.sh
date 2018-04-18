@@ -211,7 +211,7 @@ EOF
 
 #Create the vsphere-graphite.json file for the vSphere-Graphite collector
 echo "Creating the vsphere-graphite.json file"
-cat << EOF > ./vsphere-graphite/vsphere-graphite.json
+cat << EOF > ./vmwcollector/vsphere-graphite.json
 {
   "Domain": ".$VCENTERDOMAIN",
   "Interval": 60,
@@ -287,6 +287,7 @@ cat << EOF > ./vsphere-graphite/vsphere-graphite.json
 EOF
 
 #Create the datasource.yml file for the dashboards
+mkdir -p ./grafana/provisioning/datasources/
 cat << EOF > ./grafana/provisioning/datasources/datasource.yml
 apiVersion: 1
 datasources:
