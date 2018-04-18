@@ -1,11 +1,13 @@
-# SFCollector
+# HCICollector
 
-The SolidFire collector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
+The HCI Ccollector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
 
 # Current Release
 v .6 (beta)
 
 ## Updates in .6
+* Changed name of repository to hcicollector from sfcollector to more accurately reflect new functionality
+* Changed file layout to be more consistent with container names and roles
 * Retooled for Grafana 5.0.0
 * Dashboards and datasources are now automatically added through the new provisioning functionality in Grafana 5
 * Removed the external volume for the Grafana container, only Graphite uses an (optional) external iSCSI volume for persistent data
@@ -18,14 +20,14 @@ See the changelog for updates in previous versions
 
 # Description
 The SFCollector is a fully packaged metrics collection and graphing solution for Element OS 9+ based on these containers: 
-* SFCollector -> runs a python script to scrape results from SolidFire clusters 
-* vsphere-graphite -> vSphere stats collector, written in Go
-* Graphite database -> keeps all time series data from the SFCollector
-* Grafana -> Graphing engine
+* sfcollector -> runs a python script to scrape results from SolidFire clusters 
+* vmwcollector -> vSphere stats collector, written in Go
+* graphite -> keeps all time series data from the HCICollector
+* grafana -> Graphing engine
 
 The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp [Trident](https://netapp.io/2018/01/26/one-container-integration/) project can be used for persistent storage of metrics on a NetApp system.
 
-![SFCollector architecture overview](http://www.jedimt.com/wp-content/uploads/2017/09/sfcollector-overview.jpeg)
+![HCICollector architecture overview](http://www.jedimt.com/wp-content/uploads/2017/09/sfcollector-overview.jpeg)
 
 ## Prerequisites
 * Docker host running 17.03+ 
@@ -34,13 +36,13 @@ The collector stores metrics in graphite and presents those metrics through a se
 ## Quick and Dirty Installation and Configuration
 
 ```
-*Clone the https://github.com/jedimt/sfcollector Github repo 
+*Clone the https://github.com/jedimt/hcicollector Github repo 
 *Execute the install_hcicollector.sh script and provide the requested input
 *Start up the containers (`docker-compose up`)
 **Or in detached mode (`docker-compose up -d`)
 ```
 
-A more complete installation and configuration guide "SFCollector_Install_and_Configure.pdf" is included in the repository.
+A more complete installation and configuration guide "HCICollector_Install_and_Configure.pdf" is included in the repository.
 
 ## Author
 

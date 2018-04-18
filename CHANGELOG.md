@@ -4,6 +4,7 @@
 .v6 (beta)
 
 ## Changes for Current Release
+* Changed file layout to be more consistent with container names and roles
 * Retooled for Grafana 5.0.0
 * Dashboards and datasources are now automatically added through the new provisioning functionality in Grafana 5
 * Removed the external volume for the Grafana container, only Graphite uses an (optional) external iSCSI volume for persistent data
