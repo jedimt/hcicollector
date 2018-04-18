@@ -88,11 +88,11 @@ docker volume create -d netapp --name $GRAPHITEVOL -o type=docker-db -o size=50G
 
 #Dccker compose configuration
 echo "Creating the docker-compose.yml file"
-cat << EOF > /opt/github/sfcollector/docker-compose.yml
+cat << EOF > /opt/github/hcicollector/docker-compose.yml
 version: "2"
 services:
   graphite:
-    build: ./graphiteconfig
+    build: ./graphite
     container_name: graphite-v.6
     restart: always
     ports:
@@ -104,7 +104,7 @@ services:
     volumes: #Trident or local volumes for persistent storage
         - $GRAPHITEVOL:/opt/graphite/storage/whisper
     networks:
-        - net_sfcollector
+        - net_hcicollector
 
   grafana:
     build: ./grafana
@@ -113,7 +113,7 @@ services:
     ports:
         - "80:3000"
     networks:
-        - net_sfcollector
+        - net_hcicollector
     environment:
         #Set password for Grafana web interface
         - GF_SECURITY_ADMIN_PASSWORD=$GPASSWORD
@@ -124,24 +124,24 @@ services:
         #- GF_SMTP_PASSWORD=<email password>
         #- GF_SMTP_SKIP_VERIFY=true
 
-  sfcollector-alpine:
-    build: ./collector-alpine
+  sfcollector:
+    build: ./sfcollector
     container_name: sfcollector-v.6
     restart: always
     networks:
-        - net_sfcollector
+        - net_hcicollector
 
-  vsphere-collector:
-    build: ./vsphere-graphite
-    container_name: vsphere-graphite-v.6
+  vmwcollector:
+    build: ./vmwcollector
+    container_name: vmwcollector-v.6
     restart: always
     networks:
-        - net_sfcollector
+        - net_hcicollector
     depends_on:
         - graphite
 
 networks:
-  net_sfcollector:
+  net_hcicollector:
     driver: bridge
 
 volumes:

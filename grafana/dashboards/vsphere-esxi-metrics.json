@@ -38,7 +38,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "description": "Average CPU utilization (Mhz) of ESXi hosts",
       "fill": 1,
       "gridPos": {
@@ -121,7 +121,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -203,7 +203,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -290,7 +290,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -379,7 +379,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -468,7 +468,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -557,7 +557,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -646,7 +646,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -735,7 +735,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -824,7 +824,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -923,7 +923,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "description": "Active memory per ESXi host",
       "fill": 1,
       "gridPos": {
@@ -1003,7 +1003,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "description": "Percentage of ESXi host memory that has been consumed",
       "fill": 1,
       "gridPos": {
@@ -1092,7 +1092,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": "",
@@ -1116,7 +1116,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": null,

@@ -29,7 +29,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "format": "bytes",
@@ -111,7 +111,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 2,
       "format": "percent",
       "gauge": {
@@ -209,7 +209,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -288,7 +288,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "format": "percent",
@@ -370,7 +370,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -472,7 +472,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "format": "percentunit",
@@ -567,7 +567,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -668,7 +668,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 1,
       "editable": true,
       "error": false,
@@ -778,7 +778,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -894,7 +894,7 @@
           "text": "sfps-prototype-cluster",
           "value": "sfps-prototype-cluster"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -917,7 +917,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": null,
@@ -940,7 +940,7 @@
           "text": "NetApp-HCI-Datastore-01",
           "value": "NetApp-HCI-Datastore-01"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": false,
         "label": null,

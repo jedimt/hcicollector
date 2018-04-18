@@ -28,7 +28,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 2,
       "format": "percent",
       "gauge": {
@@ -117,7 +117,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 2,
       "format": "percent",
       "gauge": {
@@ -208,7 +208,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "decimals": 2,
       "format": "percent",
       "gauge": {
@@ -295,7 +295,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -396,7 +396,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -499,7 +499,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -602,7 +602,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -713,7 +713,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -826,7 +826,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -939,7 +939,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1035,7 +1035,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1133,7 +1133,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1240,7 +1240,7 @@
             "$__all"
           ]
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": null,

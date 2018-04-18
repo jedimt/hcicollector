@@ -38,7 +38,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -117,7 +117,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -209,7 +209,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -301,7 +301,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -379,7 +379,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -457,7 +457,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -553,7 +553,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -637,7 +637,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db",
+      "datasource": "graphite-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -728,7 +728,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": null,
@@ -751,7 +751,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "graphite-db",
+        "datasource": "graphite-db-dev",
         "hide": 0,
         "includeAll": true,
         "label": null,
