@@ -1,4 +1,6 @@
-#Install HCI Collector####
+#!/bin/bash
+
+####Install HCI Collector####
 
 for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 
@@ -9,9 +11,8 @@ Yellow='\033[0;33m'       # Yellow
 Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        #White
+White='\033[0;37m'        # White
 
-####Trident install and configuration####
 #Read in variables
 echo -e ${Red} "Enter the SolidFire management virtual IP (MVIP): "
 read SFMVIP
@@ -21,9 +22,9 @@ echo -e ${Red} "Enter the SolidFire username (case sensitive): "
 read SFUSER
 echo -e ${Red} "Enter the Solidfire password: "
 read -s SFPASSWORD
-echo -e ${Blue} "Enter the tenant account to use for Trident: "
+echo -e ${Purple} "Enter the tenant account to use for Trident: "
 read TACCOUNT
-echo -e ${Blue} "Enter the volume name to create for Graphite"
+echo -e ${Purple} "Enter the volume name to create for Graphite"
 read GRAPHITEVOL
 echo -e ${Yellow} "Enter the password to use for the Grafana admin account: "
 read -s GPASSWORD
@@ -35,9 +36,11 @@ echo -e ${Green} "Enter the vCenter hostname. Ex. vcsa: "
 read VCENTERHOSTNAME
 echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
 read VCENTERDOMAIN
-echo -e ${Purple} "Enter the IP address of this Docker host: "
+echo -e ${Cyan} "Enter the IP address of this Docker host: "
 read DOCKERIP
 echo -e ${White} "Beginning Install"
+
+####Trident install and configuration####
 
 #Create the Trident config file
 mkdir -p /etc/netappdvp
