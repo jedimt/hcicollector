@@ -42,7 +42,7 @@ The collector stores metrics in graphite and presents those metrics through a se
 **Or in detached mode (`docker-compose up -d`)
 ```
 
-A more complete installation and configuration guide "HCICollector_Install_and_Configure.pdf" is included in the repository.
+A (draft of a) more complete installation and configuration guide "Visualizing_NetApp_HCI_Performance.pdf" is included in the repository.
 
 ## Author
 
