@@ -1,9 +1,19 @@
 # Changelog
 
 # Current Release
-.v5 (beta)
+.v6 (beta)
 
 ## Changes for Current Release
+* Changed file layout to be more consistent with container names and roles
+* Retooled for Grafana 5.0.0
+* Dashboards and datasources are now automatically added through the new provisioning functionality in Grafana 5
+* Removed the external volume for the Grafana container, only Graphite uses an (optional) external iSCSI volume for persistent data
+* Added the ability to poll for active alerts in the "SolidFire Cluster" dashboard. 
+* Added support for email alerting based on SolidFire events. Note: alerting queries do not support templating variables so if you have multiple clusters you will need to use "*" for the cluster instance instead of the "$Cluster" variable. The net effect of this is that the alert pane will show alerts from ALL clusters instead of an individually selected cluster. 
+* New detailed install document
+* Added a very basic installation script
+
+## Updates in .5
 * Extensive dashboard updates. Dashboards now available on [grafana.com](https://grafana.com/dashboards?search=HCI)
 * Added additional metrics to collection
 * Updated to Trident from NDVP for persistent storage 

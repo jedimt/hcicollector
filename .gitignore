@@ -1,3 +1,8 @@
+overview.pptx
+docker-compose.yml
 export-dashboards.sh
-graphiteconfig/basic_auth
-dashboards/netapp-hci-esxi-storage.json
+grafana/dashboards/system-dashboard.json
+install_hcicollector_answer.sh
+collector-alpine/wrapper.sh
+vsphere-graphite/vsphere-graphite.json
+grafana/provisioning/datasources/datasource.yml
