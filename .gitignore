@@ -1,8 +1,4 @@
-overview.pptx
 docker-compose.yml
-export-dashboards.sh
-grafana/dashboards/system-dashboard.json
-install_hcicollector_answer.sh
-collector-alpine/wrapper.sh
-vsphere-graphite/vsphere-graphite.json
+sfcollector/wrapper.sh
+vmwcollector/vsphere-graphite.json
 grafana/provisioning/datasources/datasource.yml
