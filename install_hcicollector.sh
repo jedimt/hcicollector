@@ -84,7 +84,7 @@ EOF
 
 echo "Installing Trident and creating the $GRAHITEVOL volume"
 #Install the Triedent plugin
-docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.01 config=config.json
+docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.04 config=config.json
 
 #Create the Docker volume for the Graphite database
 docker volume create -d netapp --name $GRAPHITEVOL -o type=docker-db -o size=50G
