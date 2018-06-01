@@ -36,7 +36,7 @@ echo -e ${Green} "Enter the vCenter hostname. Ex. vcsa: "
 read VCENTERHOSTNAME
 echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
 read VCENTERDOMAIN
-echo -e ${Cyan} "Enter the IP address of this Docker host: "
+echo -e ${White} "Enter the IP address of this Docker host: "
 read DOCKERIP
 echo -e ${White} "Beginning Install"
 
@@ -85,6 +85,9 @@ EOF
 echo "Installing Trident and creating the $GRAHITEVOL volume"
 #Install the Triedent plugin
 docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.04 config=config.json
+
+#Wait for a couple seconds for Trident to initialize
+sleep 10
 
 #Create the Docker volume for the Graphite database
 docker volume create -d netapp --name $GRAPHITEVOL -o type=docker-db -o size=50G
@@ -309,3 +312,5 @@ EOF
 echo "Modifying the default 'datasource' values in the pre-packeged dashboards"
 DASHBOARDS=$(ls grafana/dashboards/*.json)
 sed -i '/-- Grafana --/b; s/\("datasource": "\).*\(".*$\)/\1'$GRAPHITEVOL'\2/g' $DASHBOARDS
+
+echo -e ${White} "Script complete. Please start the containers."
