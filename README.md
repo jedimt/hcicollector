@@ -27,7 +27,7 @@ The SFCollector is a fully packaged metrics collection and graphing solution for
 
 The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp [Trident](https://netapp.io/2018/01/26/one-container-integration/) project can be used for persistent storage of metrics on a NetApp system.
 
-![HCICollector architecture overview](http://www.jedimt.com/wp-content/uploads/2018/04/overview.jpg)
+![HCICollector architecture overview](https://github.com/jedimt/hcicollector/blob/master/hcicollector_architecture_overview.jpg)
 
 ## Prerequisites
 * Docker host running 17.03+ 
@@ -42,7 +42,10 @@ The collector stores metrics in graphite and presents those metrics through a se
 **Or in detached mode (`docker-compose up -d`)
 ```
 
-A (draft of a) more complete installation and configuration guide "Visualizing_NetApp_HCI_Performance.pdf" is included in the repository.
+For more information please consult the following material included in this repository:
+* Installation and configuration guide "TR-4694-0618-Visualizing-NetApp-HCI-Performance.pdf" 
+* Overview PowerPoint deck "HCICollector Overview.pptx"
+* Installation demo and dashboard walkthrough "hcicollector-v.6-Install_and_Overview.mp4"
 
 ## Author
 
