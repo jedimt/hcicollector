@@ -299,7 +299,7 @@ apiVersion: 1
 datasources:
   - name: $GRAPHITEVOL
     type: graphite
-    access: proxy
+    access: direct
     orgId: 1
     url: http://$DOCKERIP:8080
     isDefault: true
