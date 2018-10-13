@@ -34,6 +34,8 @@ RUN \
 
 # Install Python packages for Graphite
 RUN pip install graphite-api[sentry] whisper carbon
+# Workaround for hcicollector issue #8
+RUN pip install --upgrade carbon
 
 # Optional install graphite-api caching
 # http://graphite-api.readthedocs.org/en/latest/installation.html#extra-dependencies
