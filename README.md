@@ -32,14 +32,19 @@ The collector stores metrics in graphite and presents those metrics through a se
 ## Prerequisites
 * Docker host running 17.03+ 
 * Account information for vCenter (optional) and SolidFire components to collect against 
-
+ 
 ## Quick and Dirty Installation and Configuration
 
 ```
-*Clone the https://github.com/jedimt/hcicollector Github repo 
-*Execute the install_hcicollector.sh script and provide the requested input
-*Start up the containers (`docker-compose up`)
-**Or in detached mode (`docker-compose up -d`)
+# install Docker CE, docker-compose and iSCSI client packages
+# enable and start docker, dnsmasq and open-iscsi service
+# clone the hcicollector repository
+git clone https://github.com/jedimt/hcicollector
+# execute the install_hcicollector.sh script and provide the requested input 
+cd hcicollector; sudo ./install_hcicollector.sh
+# start up the containers
+sudo docker-compose up
+# to run in detached mode: sudo docker-compose up -d
 ```
 
 For more information please consult the following material included in this repository:
