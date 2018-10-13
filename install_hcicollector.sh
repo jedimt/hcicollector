@@ -82,7 +82,7 @@ cat << EOF > /etc/netappdvp/config.json
 }
 EOF
 
-echo "Installing Trident and creating the $GRAHITEVOL volume"
+echo "Installing Trident and creating the $GRAPHITEVOL volume"
 #Install the Triedent plugin
 docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.04 config=config.json
 
