@@ -626,5 +626,5 @@ func (vcenter *VCenter) Query(interval int, domain string, channel *chan backend
 			*channel <- point
 		}
 	}
-	stdlog.Println("Got " + strconv.Itoa(returncount) + " resluts from " + vcenter.Hostname + " with " + strconv.Itoa(valuescount) + " values")
+	stdlog.Println("Got " + strconv.Itoa(returncount) + " results from " + vcenter.Hostname + " with " + strconv.Itoa(valuescount) + " values")
 }

@@ -84,7 +84,7 @@ EOF
 
 echo "Installing Trident and creating the $GRAHITEVOL volume"
 #Install the Triedent plugin
-docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.04 config=config.json
+docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:18.07 config=config.json
 
 #Wait for a couple seconds for Trident to initialize
 sleep 10
