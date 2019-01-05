@@ -42,7 +42,8 @@ The collector stores metrics in graphite and presents those metrics through a se
 git clone https://github.com/jedimt/hcicollector
 # execute the install_hcicollector.sh script and provide the requested input 
 cd hcicollector; sudo ./install_hcicollector.sh
-# if no external storage, create local volume: docker volume create --name=chosen-graphite-volume-name
+# w/o Trident storage, create local volume using the volume name chosen in install wizard
+#   docker volume create --name=chosen-name
 # start up the containers
 sudo docker-compose up
 # to run in detached mode: sudo docker-compose up -d
