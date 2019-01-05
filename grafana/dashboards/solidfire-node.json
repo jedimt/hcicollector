@@ -416,7 +416,7 @@
       "id": 91,
       "panels": [],
       "repeat": null,
-      "title": "New row",
+      "title": "Disks",
       "type": "row"
     },
     {
@@ -896,7 +896,7 @@
       "id": 93,
       "panels": [],
       "repeat": null,
-      "title": "Storage interface",
+      "title": "Storage Interface",
       "type": "row"
     },
     {
@@ -1316,7 +1316,7 @@
       "id": 94,
       "panels": [],
       "repeat": null,
-      "title": "Mgmt Interface",
+      "title": "Management Interface",
       "type": "row"
     },
     {
