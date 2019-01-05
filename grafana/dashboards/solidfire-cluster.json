@@ -13,7 +13,7 @@
       }
     ]
   },
-  "description": "Metrics for SolidFire cluster",
+  "description": "Metrics for Element cluster",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
@@ -31,7 +31,7 @@
       "id": 37,
       "panels": [],
       "repeat": null,
-      "title": "SolidFire Alerts",
+      "title": "Element Cluster Alerts",
       "type": "row"
     },
     {
