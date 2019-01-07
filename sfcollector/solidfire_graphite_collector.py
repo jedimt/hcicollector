@@ -156,7 +156,7 @@ def send_node_stats(sf_element_factory, prefix):
 def send_volume_stats(sf_element_factory, prefix):
     """
     send a subset of ListVolumeStatsByVolume results to graphite.
-    Note: Calls ListViolumes to get volume names for use in metric path.
+    Note: Calls ListVolumes to get volume names for use in metric path.
     """
     metrics_list = ['volumeSize', 'zeroBlocks', 'nonZeroBlocks', 'volumeUtilization',
                     'actualIOPS', 'averageIOPSize', 'throttle', 'burstIOPSCredit',
