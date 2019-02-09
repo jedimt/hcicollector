@@ -1,7 +1,6 @@
 # Graphite stack
 
 FROM graphiteapp/graphite-statsd:1.1.5-7
-ENTRYPOINT [ "/start-vsphere-graphite.sh" ]
 
 # Graphite
 COPY carbon.conf /opt/graphite/conf/carbon.conf
