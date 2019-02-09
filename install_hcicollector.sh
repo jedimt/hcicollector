@@ -32,10 +32,12 @@ echo -e ${Green} "Enter the vCenter username: "
 read VCENTERUSER
 echo -e ${Green} "Enter the vCenter password: "
 read -s VCENTERPASSWORD
-echo -e ${Green} "Enter the vCenter hostname. Ex. vcsa: "
+echo -e ${Green} "Enter the vCenter hostname or IP. Ex. vcsa: "
 read VCENTERHOSTNAME
-echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com: "
+echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com, local: "
 read VCENTERDOMAIN
+echo -e ${Green} "Does this vCenter have VMs that do not resolve in DNS (true or false)? Ex. true: "
+read VCENTERIPBASED
 echo -e ${White} "Enter the IP address of this Docker host: "
 read DOCKERIP
 echo -e ${White} "Beginning Install"
@@ -222,6 +224,7 @@ cat << EOF > ./vmwcollector/vsphere-graphite.json
   "Domain": ".$VCENTERDOMAIN",
   "Interval": 60,
   "FlushSize": 100,
+  "ReplacePoint": $VCENTERIPBASED,
   "VCenters": [
     { "Username": "$VCENTERUSER", "Password": "$VCENTERPASSWORD", "Hostname": "$VCENTERHOSTNAME" }
   ],
