@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:640",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -16,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1523021135715,
+  "iteration": 1554393802283,
   "links": [],
   "panels": [
     {
@@ -30,7 +29,7 @@
       ],
       "datasource": "graphite-db-dev",
       "decimals": 2,
-      "format": "percent",
+      "format": "percentunit",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -40,7 +39,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -59,7 +58,7 @@
         }
       ],
       "maxDataPoints": 100,
-      "minSpan": 3,
+      "maxPerRow": 8,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -78,8 +77,8 @@
       "scopedVars": {
         "Cluster": {
           "selected": false,
-          "text": "CYCLOPS",
-          "value": "CYCLOPS"
+          "text": "sfps-grimlock-cluster",
+          "value": "sfps-grimlock-cluster"
         }
       },
       "sparkline": {
@@ -92,189 +91,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "netapp.solidfire.cluster.$Cluster.clusterUtilizationScaled"
-        }
-      ],
-      "thresholds": "40,75",
-      "title": "$Cluster cluster Utilization %",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "graphite-db-dev",
-      "decimals": 2,
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 8,
-        "y": 0
-      },
-      "id": 41,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "minSpan": 3,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "GHOSTRIDER",
-          "value": "GHOSTRIDER"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "refId": "A",
-          "target": "netapp.solidfire.cluster.$Cluster.clusterUtilizationScaled"
-        }
-      ],
-      "thresholds": "40,75",
-      "title": "$Cluster cluster Utilization %",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "graphite-db-dev",
-      "decimals": 2,
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "id": 42,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "minSpan": 3,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "sfps-prototype-cluster",
-          "value": "sfps-prototype-cluster"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "refId": "A",
-          "target": "netapp.solidfire.cluster.$Cluster.clusterUtilizationScaled"
+          "target": "netapp.solidfire.cluster.$Cluster.clusterUtilization"
         }
       ],
       "thresholds": "40,75",
@@ -299,7 +116,7 @@
       "fill": 1,
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 5
       },
@@ -327,8 +144,8 @@
       "scopedVars": {
         "Cluster": {
           "selected": false,
-          "text": "CYCLOPS",
-          "value": "CYCLOPS"
+          "text": "sfps-grimlock-cluster",
+          "value": "sfps-grimlock-cluster"
         }
       },
       "seriesOverrides": [],
@@ -338,17 +155,20 @@
       "targets": [
         {
           "hide": false,
+          "refCount": 0,
           "refId": "A",
           "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.readOps), 5), 'Read IOPS')"
         },
         {
           "hide": false,
+          "refCount": 0,
           "refId": "B",
           "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.writeOps), 5), 'Write IOPS')",
           "textEditor": false
         },
         {
           "hide": false,
+          "refCount": 0,
           "refId": "C",
           "target": "alias(keepLastValue(perSecond(sumSeries(netapp.solidfire.cluster.$Cluster.{readOps,writeOps})), 5), 'Total IOPS')",
           "textEditor": false
@@ -356,6 +176,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster IOPS",
       "tooltip": {
@@ -389,213 +210,11 @@
           "min": null,
           "show": true
         }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 5
-      },
-      "id": 43,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 30,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "GHOSTRIDER",
-          "value": "GHOSTRIDER"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "hide": false,
-          "refId": "A",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.readOps), 5), 'Read IOPS')"
-        },
-        {
-          "hide": false,
-          "refId": "B",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.writeOps), 5), 'Write IOPS')",
-          "textEditor": false
-        },
-        {
-          "hide": false,
-          "refId": "C",
-          "target": "alias(keepLastValue(perSecond(sumSeries(netapp.solidfire.cluster.$Cluster.{readOps,writeOps})), 5), 'Total IOPS')",
-          "textEditor": false
-        }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster IOPS",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 5
-      },
-      "id": 44,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 30,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "sfps-prototype-cluster",
-          "value": "sfps-prototype-cluster"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "hide": false,
-          "refId": "A",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.readOps), 5), 'Read IOPS')"
-        },
-        {
-          "hide": false,
-          "refId": "B",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.writeOps), 5), 'Write IOPS')",
-          "textEditor": false
-        },
-        {
-          "hide": false,
-          "refId": "C",
-          "target": "alias(keepLastValue(perSecond(sumSeries(netapp.solidfire.cluster.$Cluster.{readOps,writeOps})), 5), 'Total IOPS')",
-          "textEditor": false
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster IOPS",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -609,7 +228,7 @@
       "grid": {},
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 12
       },
@@ -638,8 +257,8 @@
       "scopedVars": {
         "Cluster": {
           "selected": false,
-          "text": "CYCLOPS",
-          "value": "CYCLOPS"
+          "text": "sfps-grimlock-cluster",
+          "value": "sfps-grimlock-cluster"
         }
       },
       "seriesOverrides": [],
@@ -672,6 +291,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Read/Write Bytes / s",
       "tooltip": {
@@ -706,233 +326,11 @@
           "min": null,
           "show": false
         }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "editable": true,
-      "error": false,
-      "fill": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 12
-      },
-      "hideTimeOverride": false,
-      "id": 45,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 40,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "GHOSTRIDER",
-          "value": "GHOSTRIDER"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "hide": true,
-          "refId": "B",
-          "target": "alias(keepLastValue(netapp.solidfire.cluster.$Cluster.readBytesLastSample, 5), '$Cluster Read Bytes/s')"
-        },
-        {
-          "hide": true,
-          "refId": "A",
-          "target": "alias(keepLastValue(netapp.solidfire.cluster.$Cluster.writeBytesLastSample, 5), '$Cluster Write Bytes/s')"
-        },
-        {
-          "refId": "C",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.readBytes), 5), 'Read Bytes/s')"
-        },
-        {
-          "refId": "D",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.writeBytes), 5), 'Write Bytes/s')"
-        },
-        {
-          "refId": "E",
-          "target": "alias(keepLastValue(sumSeries(perSecond(netapp.solidfire.cluster.$Cluster.{readBytes,writeBytes})), 5), 'Total Bytes/s')"
-        }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster Read/Write Bytes / s",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "Bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "editable": true,
-      "error": false,
-      "fill": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 12
-      },
-      "hideTimeOverride": false,
-      "id": 46,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 40,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "sfps-prototype-cluster",
-          "value": "sfps-prototype-cluster"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "hide": true,
-          "refId": "B",
-          "target": "alias(keepLastValue(netapp.solidfire.cluster.$Cluster.readBytesLastSample, 5), '$Cluster Read Bytes/s')"
-        },
-        {
-          "hide": true,
-          "refId": "A",
-          "target": "alias(keepLastValue(netapp.solidfire.cluster.$Cluster.writeBytesLastSample, 5), '$Cluster Write Bytes/s')"
-        },
-        {
-          "refId": "C",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.readBytes), 5), 'Read Bytes/s')"
-        },
-        {
-          "refId": "D",
-          "target": "alias(keepLastValue(perSecond(netapp.solidfire.cluster.$Cluster.writeBytes), 5), 'Write Bytes/s')"
-        },
-        {
-          "refId": "E",
-          "target": "alias(keepLastValue(sumSeries(perSecond(netapp.solidfire.cluster.$Cluster.{readBytes,writeBytes})), 5), 'Total Bytes/s')"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster Read/Write Bytes / s",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "Bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ]
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
@@ -946,7 +344,7 @@
       "grid": {},
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 19
       },
@@ -978,8 +376,8 @@
       "scopedVars": {
         "Cluster": {
           "selected": false,
-          "text": "CYCLOPS",
-          "value": "CYCLOPS"
+          "text": "sfps-grimlock-cluster",
+          "value": "sfps-grimlock-cluster"
         }
       },
       "seriesOverrides": [],
@@ -995,6 +393,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Drive Status",
       "tooltip": {
@@ -1028,206 +427,14 @@
           "min": null,
           "show": false
         }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "editable": true,
-      "error": false,
-      "fill": 1,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 19
-      },
-      "height": "",
-      "id": 47,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 20,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "GHOSTRIDER",
-          "value": "GHOSTRIDER"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "refId": "B",
-          "target": "aliasByNode(keepLastValue(netapp.solidfire.cluster.$Cluster.drives.*.*, 5), 6)",
-          "textEditor": true
-        }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster Drive Status",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "graphite-db-dev",
-      "editable": true,
-      "error": false,
-      "fill": 1,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 19
-      },
-      "height": "",
-      "id": 48,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": true,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1523021135715,
-      "repeatPanelId": 20,
-      "scopedVars": {
-        "Cluster": {
-          "selected": false,
-          "text": "sfps-prototype-cluster",
-          "value": "sfps-prototype-cluster"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "refId": "B",
-          "target": "aliasByNode(keepLastValue(netapp.solidfire.cluster.$Cluster.drives.*.*, 5), 6)",
-          "textEditor": true
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$Cluster Drive Status",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ]
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
-  "schemaVersion": 16,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1241,6 +448,7 @@
           ]
         },
         "datasource": "graphite-db-dev",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
         "label": null,
@@ -1250,6 +458,7 @@
         "query": "netapp.solidfire.cluster.*",
         "refresh": 2,
         "regex": "",
+        "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -1291,5 +500,5 @@
   "timezone": "",
   "title": "Multi-Cluster NOC View",
   "uid": "AWltdqzmz",
-  "version": 21
+  "version": 1
 }
