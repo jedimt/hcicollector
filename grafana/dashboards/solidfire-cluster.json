@@ -1067,7 +1067,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "scale(netapp.solidfire.cluster.$Cluster.clusterUtilizationScaled, 100)"
+          "target": "netapp.solidfire.cluster.$Cluster.clusterUtilization"
         }
       ],
       "thresholds": "60,80",
