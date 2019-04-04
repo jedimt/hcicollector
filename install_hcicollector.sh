@@ -36,7 +36,7 @@ echo -e ${Green} "Enter the vCenter hostname or IP. Ex. vcsa: "
 read VCENTERHOSTNAME
 echo -e ${Green} "Enter the vCenter domain. Ex. rtp.openenglab.netapp.com, local: "
 read VCENTERDOMAIN
-echo -e ${Green} "Does this vCenter have VMs that do not resolve in DNS (true or false)? Ex. true: "
+echo -e ${Green} "Does this vCenter have ESXi host added by IP address (true or false)? Ex. false "
 read VCENTERIPBASED
 echo -e ${White} "Enter the IP address of this Docker host: "
 read DOCKERIP
@@ -101,7 +101,7 @@ version: "2"
 services:
   graphite:
     build: ./graphite
-    container_name: graphite-v.6
+    container_name: graphite-v.7
     restart: always
     ports:
         - "8080:80"
@@ -116,7 +116,7 @@ services:
 
   grafana:
     build: ./grafana
-    container_name: grafana-v.6
+    container_name: grafana-v.7
     restart: always
     ports:
         - "80:3000"
@@ -134,14 +134,14 @@ services:
 
   sfcollector:
     build: ./sfcollector
-    container_name: sfcollector-v.6
+    container_name: sfcollector-v.7
     restart: always
     networks:
         - net_hcicollector
 
   vmwcollector:
     build: ./vmwcollector
-    container_name: vmwcollector-v.6
+    container_name: vmwcollector-v.7
     restart: always
     networks:
         - net_hcicollector
