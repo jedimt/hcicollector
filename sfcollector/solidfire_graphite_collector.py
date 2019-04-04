@@ -52,20 +52,20 @@ def send_cluster_stats(sf_element_factory, prefix):
     """
     send a subset of GetClusterStats API call results to graphite.
     """
-    metrics = ['clientQueueDepth', 'clusterUtilization', 'readOpsLastSample', 
+    metrics = ['clientQueueDepth', 'clusterUtilization', 'readOpsLastSample',
                'readBytesLastSample', 'writeOpsLastSample', 'writeBytesLastSample',
                'actualIOPS', 'latencyUSec', 'normalizedIOPS', 'readBytes',
                'readLatencyUSec', 'readOps', 'unalignedReads', 'unalignedWrites',
                'writeLatencyUSec', 'writeOps', 'writeBytes']
 
     cluster_stats_dict = sf_element_factory.get_cluster_stats().to_json()['clusterStats']
-    
+
     clusterUtilizationDec = float(cluster_stats_dict['clusterUtilization'])
     clusterUtilizationScaled = clusterUtilizationDec
 
     if to_graphite:
         graphyte.send(prefix + '.clusterUtilizationScaled', clusterUtilizationScaled)
-    
+
     for key in metrics:
         if to_graphite:
             graphyte.send(prefix + '.' + key, to_num(cluster_stats_dict[key]))
@@ -255,7 +255,7 @@ def to_num(metric):
     """
     x = 0
     try:
-        x = int(metric)
+        x = float(metric)
     except ValueError:
         try:
             x = float(metric)
@@ -273,22 +273,26 @@ parser.add_argument('-u', '--username', default='admin',
                     help='username for SolidFire array. default admin')
 parser.add_argument('-p', '--password', default='password',
                     help='password for SolidFire array. default password')
+parser.add_argument('-o', '--timeout', default=15,
+                    help='Timeout for SolidFire API calls to complete.')
 parser.add_argument('-g', '--graphite', default='localhost',
                     help='hostname of Graphite server to send to. default localhost. "debug" sends metrics to logfile')
 parser.add_argument('-t', '--port', type=int, default=2003,
                     help='port to send message to. default 2003. if the --graphite is set to debug can be omitted')
 parser.add_argument('-m', '--metricroot', default='netapp.solidfire.cluster',
                     help='graphite metric root. default netapp.solidfire.cluster')
-parser.add_argument('-l', '--logfile', default='/tmp/solidfire-graphite-collector.log',
-                    help='logfile. default: /tmp/solidfire-graphite-collector.log')
+parser.add_argument('-l', '--logfile', 
+                    help='logfile.')
 args = parser.parse_args()
 
 to_graphite = True
 # Logger module configuration
+LOG = logging.getLogger('solidfire_graphite_collector.py')
 if args.logfile:
-    LOG = logging.getLogger('solidfire_graphite_collector.py')
     logging.basicConfig(filename=args.logfile, level=logging.DEBUG, format='%(asctime)s %(message)s')
     LOG.warning("Starting Collector script as a daemon.  No console output possible.")
+else:
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 # Initialize graphyte sender
 if args.graphite == "debug":
@@ -300,17 +304,24 @@ else:
 LOG.info("Metrics Collection for array: {0}".format(args.solidfire))
 try:
     sfe = ElementFactory.create(args.solidfire, args.username, args.password)
-    sfe.timeout(15)
-    cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
-    send_cluster_stats(sfe, cluster_name)
-    send_cluster_faults(sfe, cluster_name)
-    send_cluster_capacity(sfe, cluster_name)
-    send_node_stats(sfe, cluster_name + '.node')
-    send_volume_stats(sfe, cluster_name)
-    send_drive_stats(sfe, cluster_name)
+    sfe.timeout(args.timeout)
 except solidfire.common.ApiServerError as e:
     LOG.warning("ApiServerError: {0}".format(str(e)))
+    sfe = None
 except Exception as e:
     LOG.warning("General Exception: {0}".format(str(e)))
+    sfe = None
 
-sfe = None
+while sfe != None:
+    try:
+        cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
+        send_cluster_stats(sfe, cluster_name)
+        send_cluster_faults(sfe, cluster_name)
+        send_cluster_capacity(sfe, cluster_name)
+        send_volume_stats(sfe, cluster_name)
+        send_drive_stats(sfe, cluster_name)
+        send_node_stats(sfe, cluster_name + '.node')
+    except solidfire.common.ApiServerError as e:
+        LOG.warning("ApiServerError: {0}".format(str(e)))
+    except Exception as e:
+        LOG.warning("General Exception: {0}".format(str(e)))
