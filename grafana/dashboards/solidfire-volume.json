@@ -726,7 +726,7 @@
         },
         {
           "refId": "D",
-          "target": "alias(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.actualIOPS, 'Total')",
+          "target": "alias(perSecond(sumSeries(netapp.solidfire.cluster.$Cluster.accountID.$AccountID.volume.$Volume.*Ops)), 'Total')",
           "textEditor": false
         },
         {
