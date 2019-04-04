@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:1032",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -17,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1523021325755,
+  "iteration": 1554391783218,
   "links": [],
   "panels": [
     {
@@ -43,7 +42,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -123,7 +122,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -202,7 +201,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -277,7 +276,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 4,
@@ -331,6 +330,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Fault History",
       "tooltip": {
@@ -364,7 +364,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "collapsed": false,
@@ -389,7 +393,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -471,7 +475,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -554,7 +558,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "decimals": null,
       "editable": true,
       "error": false,
@@ -636,7 +640,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "editable": true,
       "error": false,
       "format": "none",
@@ -727,7 +731,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -779,6 +783,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster IOPS",
       "tooltip": {
@@ -811,14 +816,18 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "editable": true,
       "error": false,
       "fill": 0,
@@ -879,6 +888,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Read/Write Bytes / s",
       "tooltip": {
@@ -912,14 +922,18 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -957,6 +971,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Cluster Recent I/O Size",
       "tooltip": {
@@ -989,7 +1004,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "collapsed": false,
@@ -1014,8 +1033,9 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "graphite-db-dev",
-      "format": "percent",
+      "datasource": "docker-db-dev",
+      "decimals": 2,
+      "format": "percentunit",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1088,7 +1108,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "description": "CPU utilization of all SolidFire nodes in the selected cluster over time",
       "fill": 1,
       "gridPos": {
@@ -1127,6 +1147,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Utilization Over Time",
       "tooltip": {
@@ -1159,14 +1180,18 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1205,6 +1230,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Node CPU Usage per Node",
       "tooltip": {
@@ -1237,7 +1263,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "collapsed": false,
@@ -1258,7 +1288,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1316,6 +1346,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Active Sessions",
       "tooltip": {
@@ -1349,14 +1380,18 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1397,6 +1432,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster  Client Queue Depth",
       "tooltip": {
@@ -1430,14 +1466,18 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "graphite-db-dev",
+      "datasource": "docker-db-dev",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1484,6 +1524,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "$Cluster Drive Status",
       "tooltip": {
@@ -1517,11 +1558,15 @@
           "min": null,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 16,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "SolidFire",
@@ -1532,10 +1577,11 @@
       {
         "allValue": null,
         "current": {
-          "text": "GHOSTRIDER",
-          "value": "GHOSTRIDER"
+          "text": "sfps-grimlock-cluster",
+          "value": "sfps-grimlock-cluster"
         },
-        "datasource": "graphite-db-dev",
+        "datasource": "docker-db-dev",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": "$cluster",
@@ -1545,6 +1591,7 @@
         "query": "netapp.solidfire.cluster.*",
         "refresh": 1,
         "regex": "",
+        "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -1586,5 +1633,5 @@
   "timezone": "browser",
   "title": "NetApp HCI - SolidFire Cluster",
   "uid": "T6iPgf6kz",
-  "version": 12
+  "version": 1
 }
