@@ -312,7 +312,6 @@ except Exception as e:
     LOG.warning("General Exception: {0}".format(str(e)))
     sfe = None
 
-while sfe != None:
     try:
         cluster_name = sfe.get_cluster_info().to_json()['clusterInfo']['name']
         send_cluster_stats(sfe, cluster_name)
@@ -325,3 +324,4 @@ while sfe != None:
         LOG.warning("ApiServerError: {0}".format(str(e)))
     except Exception as e:
         LOG.warning("General Exception: {0}".format(str(e)))
+     sfe = None
