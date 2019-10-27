@@ -3,18 +3,10 @@
 The HCI Ccollector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
 
 # Current Release
-v .6 (beta)
+v .7 (beta)
 
-## Updates in .6
-* Changed name of repository to hcicollector from sfcollector to more accurately reflect new functionality
-* Changed file layout to be more consistent with container names and roles
-* Retooled for Grafana 5.0.0
-* Dashboards and datasources are now automatically added through the new provisioning functionality in Grafana 5
-* Removed the external volume for the Grafana container, only Graphite uses an (optional) external iSCSI volume for persistent data
-* Added the ability to poll for active alerts in the "SolidFire Cluster" dashboard.
-* Added support for email alerting based on SolidFire events. Note: alerting queries do not support templating variables so if you have multiple clusters you will need to use "*" for the cluster instance instead of the "$Cluster" variable. The net effect of this is that the alert pane will show alerts from ALL clusters instead of an individually selected cluster.
-* New detailed install document
-* Added a very basic installation script
+## Updates in .7
+* TODO
 
 See the changelog for updates in previous versions
 
@@ -23,7 +15,7 @@ The SFCollector is a fully packaged metrics collection and graphing solution for
 * sfcollector -> runs a python script to scrape results from SolidFire clusters 
 * vmwcollector -> vSphere stats collector, written in Go
 * graphite -> keeps all time series data from the HCICollector
-* grafana -> Graphing engine
+* grafana -> graphing engine
 
 The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp [Trident](https://netapp.io/2018/01/26/one-container-integration/) project can be used for persistent storage of metrics on a NetApp system.
 
@@ -68,5 +60,5 @@ For more information please consult the following material included in this repo
 
 This would not have been possible if not for the prior work of cblomart, cbiebers and jmreicha
 * [solidfire-graphite-collector](https://github.com/cbiebers/solidfire-graphite-collector) Original Python collector script 
-* [graphite-docker](https://github.com/jmreicha/graphite-docker) Graphite and Grafana containers
+* [docker-graphite-statsd](https://github.com/graphite-project/docker-graphite-statsd) Graphite and Statsd container
 * [vsphere-graphite](https://github.com/cblomart/vsphere-graphite) vSphere collector for Graphite
