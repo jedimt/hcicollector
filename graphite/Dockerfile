@@ -1,6 +1,6 @@
 # Graphite stack
 
-FROM graphiteapp/graphite-statsd:1.1.5-7
+FROM graphiteapp/graphite-statsd:1.1.6-1
 
 # Graphite
 COPY carbon.conf /opt/graphite/conf/carbon.conf
