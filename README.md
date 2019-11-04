@@ -46,6 +46,11 @@ For more information please consult the following material included in this repo
 * Overview PowerPoint deck "HCICollector Overview.pptx"
 * Installation demo and dashboard walkthrough "hcicollector-v.6-Install_and_Overview.mp4"
 
+### Stand-Alone Use of Collector Script
+
+Should you want to use collect Element cluster metrics in your own project or existing Graphite
+environment, you may use solidfire_graphite_collector.py: `python3 solidfire_graphite_collector.py -h`
+
 ## Author
 
 **Aaron Patten**
