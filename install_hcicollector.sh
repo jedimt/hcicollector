@@ -220,7 +220,7 @@ retentions = 5s:1d,1m:28d,1h:2y
 
 [catchall]
 pattern = ^.*
-retentions = 1m:5d,1m:28d
+retentions = 1m:5d,10m:28d
 EOF
 
 #Create the vsphere-graphite.json file for the vSphere-Graphite collector
