@@ -1,6 +1,6 @@
 # HCICollector
 
-The HCI Ccollector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
+The HCI Collector is a container-based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
 
 # Current Release
 v .7 (beta)
