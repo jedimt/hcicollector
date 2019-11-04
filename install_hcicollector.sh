@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#Check for proper permissions (https://stackoverflow.com/a/21622456)
+if (( $EUID != 0 )); then
+    echo "Please execute this script as root or use sudo"
+    exit 128
+fi
+
 ####Install HCI Collector####
 
 for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
