@@ -1,29 +1,33 @@
 # HCICollector
 
-The HCI Collector is a container-based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
+The HCI Collector is a container-based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS v11 or better.
 
 # Current Release
-v .7 (beta)
 
-## Updates in .7
+v0.7 (beta)
+
+## Updates in 0.7
+
 * TODO
 
 See the changelog for updates in previous versions
 
 # Description
+
 The SFCollector is a fully packaged metrics collection and graphing solution for Element OS 9+ based on these containers: 
 * sfcollector -> runs a python script to scrape results from SolidFire clusters 
 * vmwcollector -> vSphere stats collector, written in Go
 * graphite -> keeps all time series data from the HCICollector
 * grafana -> graphing engine
 
-The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp [Trident](https://netapp.io/2018/01/26/one-container-integration/) project can be used for persistent storage of metrics on a NetApp system.
+The collector stores metrics in graphite and presents those metrics through a set of pre-configured Grafana dashboards.  Optionally, the Netapp [Trident](https://netapp.io/2018/01/26/one-container-integration/) project may be used for persistent storage of metrics on a NetApp system.
 
-![HCICollector architecture overview](https://github.com/jedimt/hcicollector/blob/master/hcicollector_architecture_overview.jpg)
+![HCICollector architecture overview](https://github.com/scaleoutsean/hcicollector/blob/master/hcicollector_architecture_overview.jpg)
 
 ## Prerequisites
-* Docker host running 17.03+ 
-* Account information for vCenter (optional) and SolidFire components to collect against 
+
+* Docker host running 19.10 
+* Account information for vCenter (optional) and Element cluster components to collect against 
  
 ## Quick and Dirty Installation and Configuration
 
@@ -49,7 +53,7 @@ For more information please consult the following material included in this repo
 ### Stand-Alone Use of Collector Script
 
 Should you want to use collect Element cluster metrics in your own project or existing Graphite
-environment, you may use solidfire_graphite_collector.py: `python3 solidfire_graphite_collector.py -h`
+environment, you may use solidfire_graphite_collector.py script from this repo (`python3 solidfire_graphite_collector.py -h`).
 
 ## Author
 
