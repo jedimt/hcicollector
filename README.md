@@ -1,3 +1,5 @@
+# NOTE: I no longer work for NetApp and will no longer make any updates to this project. Please see Sean's page for updates. https://github.com/scaleoutsean/hcicollector
+
 # HCICollector
 
 The HCI Ccollector is a container based metrics collection and graphing solution for NetApp HCI and SolidFire systems running Element OS 9+
